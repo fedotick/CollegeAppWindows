@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CollegeAppWindows.Models;
+using CollegeAppWindows.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
