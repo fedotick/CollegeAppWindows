@@ -1,0 +1,55 @@
+﻿<Page x:Class="CollegeAppWindows.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeAppWindows.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="MainPage">
+
+    <Page.Resources>
+        <Style x:Key="NavigationButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="16"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="288"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="#E6E6E6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Padding="20 0" VerticalAlignment="Center" Text="College"/>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <Button x:Name="btnTeachers" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F469;&#x200D;&#x1F3EB;    Teachers"/>
+                        <Button x:Name="btnGroups" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F465;    Groups"/>
+                        <Button x:Name="btnStudents" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F468;&#x200D;&#x1F393;    Students"/>
+                        <Button x:Name="btnCathedrae" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F3DB;    Cathedrae"/>
+                        <Button x:Name="btnSections" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F4DA;    Sections"/>
+                        <Button x:Name="btnSpecialties" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F393;    Specialties"/>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+
+        <Frame Grid.Column="1" x:Name="ContentFrame"/>
+    </Grid>
+</Page>

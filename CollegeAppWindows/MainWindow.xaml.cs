@@ -29,6 +29,7 @@ namespace CollegeAppWindows
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new Uri("Pages/MainPage.xaml", UriKind.Relative));
         }
     }
 }
