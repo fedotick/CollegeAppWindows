@@ -9,7 +9,7 @@
       Title="TeachersShowPage">
 
     <Grid>
-        <DataGrid Grid.Row="1" x:Name="dataGrid">
+        <DataGrid Grid.Row="1" x:Name="dataGrid" Margin="65">
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="contextMenuItemEdit" Header="Edit"/>

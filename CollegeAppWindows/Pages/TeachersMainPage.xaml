@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
-            <StackPanel Style="{StaticResource HeaderStackPanelStyle}" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Teachers"/>
                 <Button x:Name="btnAddNewEntry" Content="Add New Entry"/>
             </StackPanel>
