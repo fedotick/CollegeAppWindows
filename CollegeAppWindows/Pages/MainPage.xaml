@@ -39,12 +39,12 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Row="0">
-                        <Button x:Name="btnTeachers" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F469;&#x200D;&#x1F3EB;    Teachers"/>
-                        <Button x:Name="btnGroups" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F465;    Groups"/>
-                        <Button x:Name="btnStudents" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F468;&#x200D;&#x1F393;    Students"/>
-                        <Button x:Name="btnCathedrae" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F3DB;    Cathedrae"/>
-                        <Button x:Name="btnSections" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F4DA;    Sections"/>
-                        <Button x:Name="btnSpecialties" Style="{StaticResource NavigationButtonStyle}" Content="&#x1F393;    Specialties"/>
+                        <Button x:Name="btnCathedrae" Style="{StaticResource NavigationButtonStyle}" Content="Cathedrae"/>
+                        <Button x:Name="btnGroups" Style="{StaticResource NavigationButtonStyle}" Content="Groups"/>
+                        <Button x:Name="btnSections" Style="{StaticResource NavigationButtonStyle}" Content="Sections"/>
+                        <Button x:Name="btnSpecialties" Style="{StaticResource NavigationButtonStyle}" Content="Specialties"/>
+                        <Button x:Name="btnStudents" Style="{StaticResource NavigationButtonStyle}" Content="Students"/>
+                        <Button x:Name="btnTeachers" Style="{StaticResource NavigationButtonStyle}" Content="Teachers"/>
                     </StackPanel>
                 </Grid>
             </ScrollViewer>

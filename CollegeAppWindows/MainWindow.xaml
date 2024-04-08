@@ -10,6 +10,6 @@
         MinHeight="320" MinWidth="500"
         WindowState="Maximized">
     <Grid>
-        <Frame x:Name="MainFrame"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
