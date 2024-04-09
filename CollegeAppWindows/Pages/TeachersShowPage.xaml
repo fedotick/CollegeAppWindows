@@ -9,7 +9,33 @@
       Title="TeachersShowPage">
 
     <Grid>
-        <DataGrid Grid.Row="1" x:Name="dataGrid" Margin="65">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="65"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--<TextBox x:Name="textBoxSearch" Grid.Column="0" Style="{StaticResource TextBoxStyleSearch}"/>-->
+
+            <Button x:Name="btnAddNewEntry" Grid.Column="2" Content="Add New Entry"/>
+        </Grid>
+
+        <DataGrid Grid.Column="1" Grid.Row="3" x:Name="dataGrid">
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="contextMenuItemEdit" Header="Edit"/>

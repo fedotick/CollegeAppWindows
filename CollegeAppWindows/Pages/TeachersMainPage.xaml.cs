@@ -28,13 +28,6 @@ namespace CollegeAppWindows.Pages
             InitializeComponent();
            
             ContentFrame.Navigate(new Uri("Pages/TeachersShowPage.xaml", UriKind.Relative));
-
-            btnAddNewEntry.Click += BtnAddNewEntry_Click;
-        }
-
-        private void BtnAddNewEntry_Click(object sender, RoutedEventArgs e)
-        {
-            ContentFrame.Navigate(new Uri("Pages/TeachersAddPage.xaml", UriKind.Relative));
         }
     }
 }

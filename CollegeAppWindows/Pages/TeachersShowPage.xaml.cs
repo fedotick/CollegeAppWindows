@@ -23,6 +23,27 @@ namespace CollegeAppWindows.Pages
         public TeachersShowPage()
         {
             InitializeComponent();
+
+            btnAddNewEntry.Click += BtnAddNewEntry_Click;
+        }
+
+        private void BtnAddNewEntry_Click(object sender, RoutedEventArgs e)
+        {
+            Frame parentFrame = GetParentFrame(sender as DependencyObject);
+
+            parentFrame.Navigate(new Uri("Pages/TeachersAddPage.xaml", UriKind.Relative));
+        }
+
+        private Frame GetParentFrame(DependencyObject child)
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
+
+            while (!(parent is Frame))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            return parent as Frame;
         }
     }
 }

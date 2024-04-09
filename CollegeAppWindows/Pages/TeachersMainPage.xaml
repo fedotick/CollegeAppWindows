@@ -10,18 +10,16 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="117"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Teachers"/>
-                <Button x:Name="btnAddNewEntry" Content="Add New Entry"/>
-            </StackPanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Teachers"/>
             <Border BorderThickness="1" BorderBrush="#ebebeb"/>
         </StackPanel>
 
-        <Frame Grid.Row="1" x:Name="ContentFrame"/>
+        <Frame Grid.Row="2" x:Name="ContentFrame"/>
     </Grid>
 </Page>
