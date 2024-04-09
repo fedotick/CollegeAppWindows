@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CollegeAppWindows.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1000"
+      d:DesignHeight="750" d:DesignWidth="1000"
       Title="TeachersAddPage">
 
     <Grid>
@@ -42,17 +42,17 @@
 
         <StackPanel Grid.Column="3" Grid.Row="1">
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Region"/>
-            <TextBox/>
+            <TextBox x:Name="textBoxRegion"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="City"/>
-            <TextBox/>
+            <TextBox x:Name="textBoxCity"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Street"/>
-            <TextBox/>
+            <TextBox x:Name="textBoxStreet"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="House number"/>
-            <TextBox/>
+            <TextBox x:Name="textBoxHouseNumber"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Apartment number"/>
-            <TextBox/>
+            <TextBox x:Name="textBoxApartmentNumber"/>
         </StackPanel>
         
-        <Button Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Content="Add"/>
+        <Button x:Name="btnAdd" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Content="Add"/>
     </Grid>
 </Page>

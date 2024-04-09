@@ -22,8 +22,9 @@ namespace CollegeAppWindows.Repositories
             _connection = connection;
         }
 
-        public void Add(T entity)
+        public int Add(T entity)
         {
+            int id = 0;
             string query = GetQueryInsert();
             
             try
@@ -32,7 +33,7 @@ namespace CollegeAppWindows.Repositories
                 {
                     AddParameters(command, entity);
                     _connection.Open();
-                    command.ExecuteNonQuery();
+                    id = Convert.ToInt32(command.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -46,6 +47,8 @@ namespace CollegeAppWindows.Repositories
                     _connection.Close();
                 }
             }
+
+            return id;
         }
 
         public T GetById(int id)
@@ -202,7 +205,7 @@ namespace CollegeAppWindows.Repositories
             columns.Length -= 2;
             values.Length -= 2;
 
-            return $"INSERT INTO [{typeof(T).Name}] ({columns}) VALUES ({values})";
+            return $"INSERT INTO [{typeof(T).Name}] ({columns}) VALUES ({values}); SELECT SCOPE_IDENTITY();";
         }
 
         private string GetQueryUpdate()
