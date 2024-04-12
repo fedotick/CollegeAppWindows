@@ -1,22 +1,10 @@
 ﻿using CollegeAppWindows.Models;
 using CollegeAppWindows.Repositories;
-using CollegeAppWindows.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using CollegeAppWindows.Utilities; 
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CollegeAppWindows.Services;
 using System.Data.SqlClient;
 
@@ -62,42 +50,61 @@ namespace CollegeAppWindows.Pages
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Teacher teacher = new Teacher();
-
+            string fullName = textBoxFullName.Text;
+            int cathedraId = Convert.ToInt32(comboBoxCathedra.SelectedValue);
+            int? experience = null;
             try
             {
-                teacher = new Teacher
-                {
-                    FullName = textBoxFullName.Text,
-                    CathedraId = Convert.ToInt32(comboBoxCathedra.SelectedValue),
-                    Experience = Convert.ToInt32(textBoxExperience.Text),
-                    DateOfBirth = DateTime.ParseExact(textBoxDateOfBirth.Text, "dd.MM.yyyy", null),
-                    PhoneNumber = textBoxPhoneNumber.Text,
-                    Email = textBoxEmail.Text
-                };
+                experience = Convert.ToInt32(textBoxExperience.Text);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-            TeacherAddress teacherAddress = new TeacherAddress();
-
+            DateTime? dateOfBirth = null;
             try
             {
-                teacherAddress = new TeacherAddress
+                dateOfBirth = DateTime.ParseExact(textBoxDateOfBirth.Text, "dd.MM.yyyy", null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            string phoneNumber = textBoxPhoneNumber.Text;
+            string email = textBoxEmail.Text;
+
+            Teacher teacher = new Teacher
                 {
-                    Region = textBoxRegion.Text,
-                    City = textBoxCity.Text,
-                    Street = textBoxStreet.Text,
-                    HouseNumber = textBoxHouseNumber.Text,
-                    ApartmentNumber = Convert.ToInt32(textBoxApartmentNumber.Text)
-                };
+                    FullName = fullName,
+                    CathedraId = cathedraId,
+                    Experience = experience,
+                    DateOfBirth = dateOfBirth,
+                    PhoneNumber = phoneNumber,
+                    Email = email
+            };
+
+            string region = textBoxRegion.Text;
+            string city = textBoxCity.Text;
+            string street = textBoxStreet.Text;
+            string houseNumber = textBoxHouseNumber.Text;
+            int? apartmentNumber = null;
+            try
+            {
+                apartmentNumber = Convert.ToInt32(textBoxApartmentNumber.Text);
             } 
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            TeacherAddress teacherAddress = new TeacherAddress
+            {
+                Region = region,
+                City = city,
+                Street = street,
+                HouseNumber = houseNumber,
+                ApartmentNumber = apartmentNumber
+            };
 
             teacherService.Add(teacher, teacherAddress);
 
