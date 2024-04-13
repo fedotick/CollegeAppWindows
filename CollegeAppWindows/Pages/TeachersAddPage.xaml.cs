@@ -22,7 +22,7 @@ namespace CollegeAppWindows.Pages
         {
             InitializeComponent();
 
-            DataBase dataBase = new DataBase();
+            DataBase dataBase = DataBase.Instance;
             SqlConnection connection = dataBase.GetConnection();
             
             cathedraRepository = new Repository<Cathedra>(connection);

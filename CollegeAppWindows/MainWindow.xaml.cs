@@ -24,8 +24,6 @@ namespace CollegeAppWindows
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DataBase dataBase = new DataBase();
-
         public MainWindow()
         {
             InitializeComponent();

@@ -3,52 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|c:\\users\\\u0444\u0451\u0434\u043E\u0440 \u0442\u043A\u0430\u0447\u0443\u043A\\onedrive\\ceiti\\college\\collegeappwindows\\collegeappwindows\\pages\\teachersaddpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\pages\\teachersaddpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\utilities\\validationutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\utilities\\validationutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\pages\\teachersaddpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\pages\\teachersaddpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\pages\\teachersmainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\pages\\teachersmainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\models\\teacheraddress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\models\\teacheraddress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\models\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\models\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\services\\teacherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\services\\teacherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\pages\\teachersmainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\pages\\teachersmainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\pages\\teachersshowpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\pages\\teachersshowpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\collegeappwindows\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|c:\\users\\\u0444\u0451\u0434\u043E\u0440 \u0442\u043A\u0430\u0447\u0443\u043A\\onedrive\\ceiti\\college\\collegeappwindows\\collegeappwindows\\utilities\\validationutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3022827-4B22-4449-B425-2501378E62DB}|CollegeAppWindows\\CollegeAppWindows.csproj|solutionrelative:collegeappwindows\\utilities\\validationutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 204,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,151 +34,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TeacherAddress.cs",
-              "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Models\\TeacherAddress.cs",
-              "RelativeDocumentMoniker": "CollegeAppWindows\\Models\\TeacherAddress.cs",
-              "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Models\\TeacherAddress.cs",
-              "RelativeToolTip": "CollegeAppWindows\\Models\\TeacherAddress.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABAAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T10:02:52.437Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Teacher.cs",
-              "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Models\\Teacher.cs",
-              "RelativeDocumentMoniker": "CollegeAppWindows\\Models\\Teacher.cs",
-              "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Models\\Teacher.cs",
-              "RelativeToolTip": "CollegeAppWindows\\Models\\Teacher.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAqwA8AAABDAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T09:00:22.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TeacherService.cs",
-              "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Services\\TeacherService.cs",
-              "RelativeDocumentMoniker": "CollegeAppWindows\\Services\\TeacherService.cs",
-              "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Services\\TeacherService.cs",
-              "RelativeToolTip": "CollegeAppWindows\\Services\\TeacherService.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAYwBkAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T07:59:49.565Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "ValidationUtil.cs",
               "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Utilities\\ValidationUtil.cs",
               "RelativeDocumentMoniker": "CollegeAppWindows\\Utilities\\ValidationUtil.cs",
               "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Utilities\\ValidationUtil.cs",
               "RelativeToolTip": "CollegeAppWindows\\Utilities\\ValidationUtil.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T07:19:51.436Z",
+              "WhenOpened": "2024-04-13T11:08:45.732Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TeachersAddPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Pages\\TeachersAddPage.xaml.cs",
-              "RelativeDocumentMoniker": "CollegeAppWindows\\Pages\\TeachersAddPage.xaml.cs",
-              "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Pages\\TeachersAddPage.xaml.cs",
-              "RelativeToolTip": "CollegeAppWindows\\Pages\\TeachersAddPage.xaml.cs",
-              "ViewState": "AQIAAFwAAAAAAAAAAAAwwA8AAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T07:18:51.129Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TeachersAddPage.xaml",
-              "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Pages\\TeachersAddPage.xaml",
-              "RelativeDocumentMoniker": "CollegeAppWindows\\Pages\\TeachersAddPage.xaml",
-              "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Pages\\TeachersAddPage.xaml",
-              "RelativeToolTip": "CollegeAppWindows\\Pages\\TeachersAddPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-09T19:08:07.073Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "TeachersShowPage.xaml",
-              "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Pages\\TeachersShowPage.xaml",
-              "RelativeDocumentMoniker": "CollegeAppWindows\\Pages\\TeachersShowPage.xaml",
-              "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Pages\\TeachersShowPage.xaml",
-              "RelativeToolTip": "CollegeAppWindows\\Pages\\TeachersShowPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-09T18:57:05.442Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "TeachersMainPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Pages\\TeachersMainPage.xaml.cs",
-              "RelativeDocumentMoniker": "CollegeAppWindows\\Pages\\TeachersMainPage.xaml.cs",
-              "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Pages\\TeachersMainPage.xaml.cs",
-              "RelativeToolTip": "CollegeAppWindows\\Pages\\TeachersMainPage.xaml.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAB0AAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-09T18:26:18.285Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Styles.xaml",
-              "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Styles.xaml",
-              "RelativeDocumentMoniker": "CollegeAppWindows\\Styles.xaml",
-              "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Styles.xaml",
-              "RelativeToolTip": "CollegeAppWindows\\Styles.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-09T18:31:01.388Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TeachersMainPage.xaml",
-              "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Pages\\TeachersMainPage.xaml",
-              "RelativeDocumentMoniker": "CollegeAppWindows\\Pages\\TeachersMainPage.xaml",
-              "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Pages\\TeachersMainPage.xaml",
-              "RelativeToolTip": "CollegeAppWindows\\Pages\\TeachersMainPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-09T19:08:25.441Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "DataBase.cs",
               "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\DataBase.cs",
               "RelativeDocumentMoniker": "CollegeAppWindows\\DataBase.cs",
               "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\DataBase.cs",
               "RelativeToolTip": "CollegeAppWindows\\DataBase.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T08:57:05.728Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Repositories\\Repository.cs",
-              "RelativeDocumentMoniker": "CollegeAppWindows\\Repositories\\Repository.cs",
-              "ToolTip": "C:\\Users\\\u0424\u0451\u0434\u043E\u0440 \u0422\u043A\u0430\u0447\u0443\u043A\\OneDrive\\CEITI\\College\\CollegeAppWindows\\CollegeAppWindows\\Repositories\\Repository.cs",
-              "RelativeToolTip": "CollegeAppWindows\\Repositories\\Repository.cs",
-              "ViewState": "AQIAALUAAAAAAAAAAAAcwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T08:57:21.623Z"
+              "WhenOpened": "2024-04-11T08:57:05.728Z",
+              "EditorCaption": ""
             }
           ]
         }

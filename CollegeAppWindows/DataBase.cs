@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 
 namespace CollegeAppWindows
 {
@@ -12,7 +7,27 @@ namespace CollegeAppWindows
     /// </summary>
     internal class DataBase
     {
+        private static DataBase? instance;
+
         private SqlConnection sqlConnection = new SqlConnection(@"Data Source=DESKTOP-L2NIP6G\MSSQLSERVER01;Initial Catalog=CollegeDB;Integrated Security=true");
+
+        private DataBase() { }
+
+        /// <summary>
+        /// Public static method for obtaining a single instance of a class.
+        /// </summary>
+        public static DataBase Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DataBase();
+                }
+
+                return instance;
+            }
+        }
 
         /// <summary>
         /// Opens the connection to the database if it's closed.
