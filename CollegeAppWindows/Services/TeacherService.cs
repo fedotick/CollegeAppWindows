@@ -27,9 +27,9 @@ namespace CollegeAppWindows.Services
             {
                 try
                 {
-                    int teacherAddressId = teacherAddressRepository.Add(teacherAddress);
+                    int teacherAddressId = teacherAddressRepository.Add(teacherAddress, transaction);
                     teacher.TeacherAddressId = teacherAddressId;
-                    teacherRepository.Add(teacher);
+                    teacherRepository.Add(teacher, transaction);
 
                     transaction.Commit();
                 }

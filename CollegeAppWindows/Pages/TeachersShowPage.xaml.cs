@@ -1,30 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CollegeAppWindows.Services;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CollegeAppWindows.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для TeachersShowPage.xaml
+    /// Interaction logic for TeachersShowPage.xaml
     /// </summary>
     public partial class TeachersShowPage : Page
     {
+        private TeacherViewService teacherViewService = new TeacherViewService();
+
         public TeachersShowPage()
         {
             InitializeComponent();
 
+            LoadTeachers();
+
             btnAddNewEntry.Click += BtnAddNewEntry_Click;
+        }
+
+        private void LoadTeachers()
+        {
+            dataGrid.ItemsSource = teacherViewService.GetAll();
         }
 
         private void BtnAddNewEntry_Click(object sender, RoutedEventArgs e)
