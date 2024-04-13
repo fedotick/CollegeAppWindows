@@ -27,7 +27,10 @@ namespace CollegeAppWindows.Repositories
                 id = Convert.ToInt32(command.ExecuteScalar());
             }
 
-            DataBase.Instance.CloseConnection();
+            if (transaction == null)
+            {
+                DataBase.Instance.CloseConnection();
+            }
 
             return id;
         }
@@ -61,7 +64,10 @@ namespace CollegeAppWindows.Repositories
                 }
             }
 
-            DataBase.Instance.CloseConnection();
+            if (transaction == null)
+            {
+                DataBase.Instance.CloseConnection();
+            }
 
             return model;
         }
@@ -91,8 +97,11 @@ namespace CollegeAppWindows.Repositories
                 }
             }
 
-            DataBase.Instance.CloseConnection();
-            
+            if (transaction == null)
+            {
+                DataBase.Instance.CloseConnection();
+            }
+
             return models;
         }
 
@@ -112,7 +121,10 @@ namespace CollegeAppWindows.Repositories
                 command.ExecuteNonQuery();
             }
 
-            DataBase.Instance.CloseConnection();
+            if (transaction == null)
+            {
+                DataBase.Instance.CloseConnection();
+            }
         }
 
         public void Delete(int id, SqlTransaction? transaction = null)
@@ -131,7 +143,10 @@ namespace CollegeAppWindows.Repositories
                 command.ExecuteNonQuery();
             }
 
-            DataBase.Instance.CloseConnection();
+            if (transaction == null)
+            {
+                DataBase.Instance.CloseConnection();
+            }
         }
 
         private string GetQueryInsert()
