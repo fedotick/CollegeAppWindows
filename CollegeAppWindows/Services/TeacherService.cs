@@ -1,6 +1,7 @@
 ﻿using CollegeAppWindows.Models;
 using CollegeAppWindows.Repositories;
 using System;
+using System.Data.SqlClient;
 using System.Windows;
 
 namespace CollegeAppWindows.Services
@@ -18,16 +19,29 @@ namespace CollegeAppWindows.Services
 
         public void Add(Teacher teacher, TeacherAddress teacherAddress)
         {
-            try
+            SqlConnection connection = DataBase.Instance.GetConnection();
+
+            DataBase.Instance.OpenConnection();
+
+            using (SqlTransaction transaction = connection.BeginTransaction())
             {
-                int teacherAddressId = teacherAddressRepository.Add(teacherAddress);
-                teacher.TeacherAddressId = teacherAddressId;
-                teacherRepository.Add(teacher);
+                try
+                {
+                    int teacherAddressId = teacherAddressRepository.Add(teacherAddress);
+                    teacher.TeacherAddressId = teacherAddressId;
+                    teacherRepository.Add(teacher);
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+            DataBase.Instance.CloseConnection();
         }
     }
 }
