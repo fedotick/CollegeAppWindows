@@ -1,189 +1,137 @@
-﻿using CollegeAppWindows.Models;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Reflection;
-using System.Reflection.PortableExecutable;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace CollegeAppWindows.Repositories
 {
     public class Repository<T>
     {
-        private readonly SqlConnection _connection;
+        public Repository() { }
 
-        public Repository(SqlConnection connection)
-        {
-            _connection = connection;
-        }
-
-        public int Add(T entity)
+        public int Add(T model, SqlTransaction? transaction = null)
         {
             int id = 0;
             string query = GetQueryInsert();
             
-            try
+            SqlConnection connection = DataBase.Instance.GetConnection();
+
+            DataBase.Instance.OpenConnection();
+
+            using (SqlCommand command = transaction == null
+                ? new SqlCommand(query, connection)
+                : new SqlCommand(query, connection, transaction))
             {
-                using (SqlCommand command = new SqlCommand(query, _connection))
-                {
-                    AddParameters(command, entity);
-                    _connection.Open();
-                    id = Convert.ToInt32(command.ExecuteScalar());
-                }
+                AddParameters(command, model);
+                id = Convert.ToInt32(command.ExecuteScalar());
             }
-            catch (Exception e)
-            {
-                MessageBox.Show($"Error adding entry: {e.Message}");
-            }
-            finally
-            {
-                if (_connection.State == ConnectionState.Open)
-                {
-                    _connection.Close();
-                }
-            }
+
+            DataBase.Instance.CloseConnection();
 
             return id;
         }
 
-        public T GetById(int id)
+        public T? GetById(int id, SqlTransaction? transaction = null)
         {
-            T entity = Activator.CreateInstance<T>();
+            T model = Activator.CreateInstance<T>();
 
             string query = $"SELECT * FROM [{typeof(T).Name}] WHERE Id = @Id";
 
-            using (SqlCommand command = new SqlCommand(query, _connection))
+            SqlConnection connection = DataBase.Instance.GetConnection();
+
+            DataBase.Instance.OpenConnection();
+
+            using (SqlCommand command = transaction == null 
+                ? new SqlCommand(query, connection)
+                : new SqlCommand(query, connection, transaction))
             {
                 command.Parameters.AddWithValue("@Id", id);
 
-                try
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    _connection.Open();
-
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    if (reader.Read())
                     {
-                        if (reader.Read())
-                        {
-                            MapPropertiesFromDataReader(entity, reader);
-                        }
-                        else
-                        {
-                            return default(T);
-                        }
+                        MapPropertiesFromDataReader(model, reader);
                     }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show($"Error receiving record: {e.Message}");
-                }
-                finally
-                {
-                    if (_connection.State == ConnectionState.Open)
+                    else
                     {
-                        _connection.Close();
+                        return default;
                     }
                 }
             }
 
-            return entity;
+            DataBase.Instance.CloseConnection();
+
+            return model;
         }
 
-        public List<T> GetAll()
+        public List<T> GetAll(SqlTransaction? transaction = null)
         {
-            List<T> entities = new List<T>();
+            List<T> models = new();
 
             string query = $"SELECT * FROM [{typeof(T).Name}]";
 
-            using (SqlCommand command = new SqlCommand(query, _connection))
+            SqlConnection connection = DataBase.Instance.GetConnection();
+
+            DataBase.Instance.OpenConnection();
+
+            using (SqlCommand command = transaction == null
+                ? new SqlCommand(query, connection)
+                : new SqlCommand(query, connection, transaction))
             {
-                try
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    _connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            T entity = Activator.CreateInstance<T>();
-
-                            MapPropertiesFromDataReader(entity, reader);
-
-                            entities.Add(entity);
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show($"Error retrieving records: {e.Message}");
-                }
-                finally
-                {
-                    if (_connection.State == ConnectionState.Open)
-                    {
-                        _connection.Close();
+                        T model = Activator.CreateInstance<T>();
+                        MapPropertiesFromDataReader(model, reader);
+                        models.Add(model);
                     }
                 }
             }
 
-            return entities;
+            DataBase.Instance.CloseConnection();
+            
+            return models;
         }
 
-        public void Update(T entity)
+        public void Update(T model, SqlTransaction? transaction = null)
         {
             string query = GetQueryUpdate();
+            
+            SqlConnection connection = DataBase.Instance.GetConnection();
 
-            try
+            DataBase.Instance.OpenConnection();
+
+            using (SqlCommand command = transaction == null
+                ? new SqlCommand(query, connection)
+                : new SqlCommand(query, connection, transaction))
             {
-                using (SqlCommand command = new SqlCommand(query, _connection))
-                {
-                    AddParameters(command, entity);
-                    _connection.Open();
-                    command.ExecuteNonQuery();
-                }
+                AddParameters(command, model);
+                command.ExecuteNonQuery();
             }
-            catch (Exception e)
-            {
-                MessageBox.Show($"Error updating record: {e.Message}");
-            }
-            finally
-            {
-                if (_connection.State == ConnectionState.Open)
-                {
-                    _connection.Close();
-                }
-            }
+
+            DataBase.Instance.CloseConnection();
         }
 
-        public void Delete(int id)
+        public void Delete(int id, SqlTransaction? transaction = null)
         {
-
             string query = $"DELETE FROM [{typeof(T).Name}] WHERE Id = @Id";
 
-            using (SqlCommand command = new SqlCommand(query, _connection))
+            SqlConnection connection = DataBase.Instance.GetConnection();
+
+            DataBase.Instance.OpenConnection();
+
+            using (SqlCommand command = transaction == null
+                ? new SqlCommand(query, connection)
+                : new SqlCommand(query, connection, transaction))
             {
                 command.Parameters.AddWithValue("@Id", id);
-
-                try
-                {
-                    _connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show($"Error deleting entry: {e.Message}");
-                }
-                finally
-                {
-                    if (_connection.State == ConnectionState.Open)
-                    {
-                        _connection.Close();
-                    }
-                }
+                command.ExecuteNonQuery();
             }
+
+            DataBase.Instance.CloseConnection();
         }
 
         private string GetQueryInsert()
@@ -227,18 +175,18 @@ namespace CollegeAppWindows.Repositories
             return $"UPDATE [{typeof(T).Name}] SET {values} WHERE Id = @Id";
         }
 
-        private void AddParameters(SqlCommand command, T entity)
+        private void AddParameters(SqlCommand command, T model)
         {
-            Type entityType = typeof(T);
-            PropertyInfo[] properties = entityType.GetProperties();
+            Type modelType = typeof(T);
+            PropertyInfo[] properties = modelType.GetProperties();
 
             foreach (PropertyInfo property in properties)
             {
-                command.Parameters.AddWithValue($"@{property.Name}", property.GetValue(entity));
+                command.Parameters.AddWithValue($"@{property.Name}", property.GetValue(model));
             }
         }
 
-        private void MapPropertiesFromDataReader(T entity, SqlDataReader reader)
+        private void MapPropertiesFromDataReader(T model, SqlDataReader reader)
         {
             PropertyInfo[] properties = typeof(T).GetProperties();
 
@@ -248,7 +196,7 @@ namespace CollegeAppWindows.Repositories
                 int columnIndex = reader.GetOrdinal(propertyName);
                 object value = reader.GetValue(columnIndex);
 
-                property.SetValue(entity, value);
+                property.SetValue(model, value);
             }
         }
     }

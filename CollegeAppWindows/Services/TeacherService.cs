@@ -1,13 +1,6 @@
 ﻿using CollegeAppWindows.Models;
 using CollegeAppWindows.Repositories;
-using CollegeAppWindows.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 using System.Windows;
 
 namespace CollegeAppWindows.Services
@@ -17,10 +10,10 @@ namespace CollegeAppWindows.Services
         private Repository<Teacher> teacherRepository;
         private Repository<TeacherAddress> teacherAddressRepository;
 
-        public TeacherService(SqlConnection connection) 
+        public TeacherService() 
         {
-            teacherRepository = new Repository<Teacher>(connection);
-            teacherAddressRepository = new Repository<TeacherAddress>(connection);
+            teacherRepository = new Repository<Teacher>();
+            teacherAddressRepository = new Repository<TeacherAddress>();
         }
 
         public void Add(Teacher teacher, TeacherAddress teacherAddress)

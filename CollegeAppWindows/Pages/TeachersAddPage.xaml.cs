@@ -22,11 +22,8 @@ namespace CollegeAppWindows.Pages
         {
             InitializeComponent();
 
-            DataBase dataBase = DataBase.Instance;
-            SqlConnection connection = dataBase.GetConnection();
-            
-            cathedraRepository = new Repository<Cathedra>(connection);
-            teacherService = new TeacherService(connection);
+            cathedraRepository = new Repository<Cathedra>();
+            teacherService = new TeacherService();
 
             InitializeComboBoxCathedra();
 
