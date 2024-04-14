@@ -1,8 +1,8 @@
 ﻿using CollegeAppWindows.Models;
 using CollegeAppWindows.Services;
+using CollegeAppWindows.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -15,44 +15,55 @@ namespace CollegeAppWindows.Pages
     public partial class TeachersShowPage : Page
     {
         private TeacherViewService teacherViewService = new TeacherViewService();
+        private List<TeacherView> teacherViews;
 
         // Filter properties
-        private HashSet<string> specificCathedraNames = new HashSet<string>();
+        private HashSet<string> availableCathedraNames = new HashSet<string>();
         private int minExperience = int.MinValue;
         private int maxExperience = int.MaxValue;
-        private HashSet<string> specificRegions = new HashSet<string>();
-        private HashSet<string> specificCities = new HashSet<string>();
-        private HashSet<string> specificStreets = new HashSet<string>();
+        private HashSet<string> availableRegions = new HashSet<string>();
+        private HashSet<string> availableCities = new HashSet<string>();
+        private HashSet<string> availableStreets = new HashSet<string>();
+
+        public List<SelectableItem> SpecificCathedraNames { get; set; } = new List<SelectableItem>();
+        public List<SelectableItem> SpecificRegions { get; set; } = new List<SelectableItem>();
+        public List<SelectableItem> SpecificCities { get; set; } = new List<SelectableItem>();
+        public List<SelectableItem> SpecificStreets { get; set; } = new List<SelectableItem>();
 
         public TeachersShowPage()
         {
             InitializeComponent();
+            DataContext = this;
 
-            LoadTeachers();
+            teacherViews = teacherViewService.GetAll();
+
+            InitializeComboBoxes();
+            ShowTeachers();
 
             btnAddNewEntry.Click += BtnAddNewEntry_Click;
         }
 
-        private void LoadTeachers()
+        private void InitializeComboBoxes()
         {
-            List<TeacherView> teacherViews = teacherViewService.GetAll();
-            var filteredTeachers = FilterTeachers(teacherViews);
-            dataGrid.ItemsSource = filteredTeachers;
+            InitializeUniqueValues();
+
+            SelectableItemUtil.AddTextToSelectableItems(availableCathedraNames, SpecificCathedraNames);
+            SelectableItemUtil.AddTextToSelectableItems(availableRegions, SpecificRegions);
+            SelectableItemUtil.AddTextToSelectableItems(availableCities, SpecificCities);
+            SelectableItemUtil.AddTextToSelectableItems(availableStreets, SpecificStreets);
         }
 
-        private IEnumerable<TeacherView> FilterTeachers(IEnumerable<TeacherView> teachers)
+        private void InitializeUniqueValues()
         {
-            return teachers.Where(FilterTeacherView);
+            availableCathedraNames = DataUtil.GetUniqueValues(teacherViews, t => t.CathedraName);
+            availableRegions = DataUtil.GetUniqueValues(teacherViews, t => t.Region);
+            availableCities = DataUtil.GetUniqueValues(teacherViews, t => t.City);
+            availableStreets = DataUtil.GetUniqueValues(teacherViews, t => t.Street);
         }
 
-        private bool FilterTeacherView(TeacherView teacherView)
+        private void ShowTeachers()
         {
-            return specificCathedraNames.Contains(teacherView.CathedraName) 
-                && teacherView.Experience >= minExperience 
-                && teacherView.Experience <= maxExperience 
-                && specificRegions.Contains(teacherView.Region) 
-                && specificCities.Contains(teacherView.City)
-                && specificStreets.Contains(teacherView.Street);
+            dataGrid.ItemsSource = teacherViews;
         }
 
         private void BtnAddNewEntry_Click(object sender, RoutedEventArgs e)
