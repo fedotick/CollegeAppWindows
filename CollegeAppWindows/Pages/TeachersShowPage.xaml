@@ -30,6 +30,40 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <ComboBox x:Name="comboBoxCathedra" Width="100" ItemsSource="{Binding SpecificCathedraNames}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Width="100" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <ComboBox x:Name="comboBoxRegion" Width="100" ItemsSource="{Binding SpecificRegions}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Width="100" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <ComboBox x:Name="comboBoxCity" Width="100" ItemsSource="{Binding SpecificCities}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Width="100" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <ComboBox x:Name="comboBoxStreet" Width="100" ItemsSource="{Binding SpecificStreets}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Width="100" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
             <!--<TextBox x:Name="textBoxSearch" Grid.Column="0" Style="{StaticResource TextBoxStyleSearch}"/>-->
 
             <Button x:Name="btnAddNewEntry" Grid.Column="2" Content="Add New Entry"/>

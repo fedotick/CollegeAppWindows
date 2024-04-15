@@ -66,6 +66,46 @@ namespace CollegeAppWindows.Pages
             dataGrid.ItemsSource = teacherViews;
         }
 
+        private void ShowTeachers(List<TeacherView> teacherViews)
+        {
+            dataGrid.ItemsSource = teacherViews;
+        }
+
+        private void CheckBox_Changed(object sender, EventArgs e)
+        {
+            List<TeacherView> filteredTeacherViews = teacherViews;
+
+            List<SelectableItem>? specificCathedraNames = comboBoxCathedra.ItemsSource as List<SelectableItem>;
+            HashSet<string> specificCathedraNames1 = SelectableItemUtil.GetCheckedItemsHashSet(specificCathedraNames);
+            if (specificCathedraNames1.Count > 0)
+            {
+                filteredTeacherViews = DataUtil.FilterBySpecificItems(filteredTeacherViews, specificCathedraNames1, t => t.CathedraName);
+            }
+
+            List<SelectableItem>? specificRegions = comboBoxRegion.ItemsSource as List<SelectableItem>;
+            HashSet<string> specificRegions1 = SelectableItemUtil.GetCheckedItemsHashSet(specificRegions);
+            if (specificRegions1.Count > 0)
+            {
+                filteredTeacherViews = DataUtil.FilterBySpecificItems(filteredTeacherViews, specificRegions1, t => t.Region);
+            }
+
+            List<SelectableItem>? specificCities = comboBoxCity.ItemsSource as List<SelectableItem>;
+            HashSet<string> specificCities1 = SelectableItemUtil.GetCheckedItemsHashSet(specificCities);
+            if (specificCities1.Count > 0)
+            {
+                filteredTeacherViews = DataUtil.FilterBySpecificItems(filteredTeacherViews, specificCities1, t => t.City);
+            }
+
+            List<SelectableItem>? specificStreets = comboBoxStreet.ItemsSource as List<SelectableItem>;
+            HashSet<string> specificStreets1 = SelectableItemUtil.GetCheckedItemsHashSet(specificStreets);
+            if (specificStreets1.Count > 0)
+            {
+                filteredTeacherViews = DataUtil.FilterBySpecificItems(filteredTeacherViews, specificStreets1, t => t.Street);
+            }
+
+            ShowTeachers(filteredTeacherViews);
+        }
+
         private void BtnAddNewEntry_Click(object sender, RoutedEventArgs e)
         {
             Frame parentFrame = GetParentFrame(sender as DependencyObject);
