@@ -11,7 +11,22 @@ namespace CollegeAppWindows.Services
         private Repository<Teacher> teacherRepository = Repository<Teacher>.GetInstance;
         private Repository<TeacherAddress> teacherAddressRepository = Repository<TeacherAddress>.GetInstance;
 
-        public TeacherService() { }
+        private static TeacherService? instance;
+
+        private TeacherService() { }
+
+        public static TeacherService GetInstance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new TeacherService();
+                }
+
+                return instance;
+            }
+        }
 
         public void Add(Teacher teacher, TeacherAddress teacherAddress)
         {

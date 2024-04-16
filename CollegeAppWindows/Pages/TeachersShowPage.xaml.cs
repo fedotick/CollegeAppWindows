@@ -14,7 +14,7 @@ namespace CollegeAppWindows.Pages
     /// </summary>
     public partial class TeachersShowPage : Page
     {
-        private TeacherViewService teacherViewService = new TeacherViewService();
+        private TeacherViewService teacherViewService = TeacherViewService.GetInstance;
         private List<TeacherView> teacherViews;
 
         // Filter properties

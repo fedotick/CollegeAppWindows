@@ -10,21 +10,17 @@ using CollegeAppWindows.Services;
 namespace CollegeAppWindows.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для TeachersAddPage.xaml
+    /// Interaction logic for TeachersAddPage.xaml
     /// </summary>
     public partial class TeachersAddPage : Page
     {
         private Repository<Cathedra> cathedraRepository = Repository<Cathedra>.GetInstance;
-        private TeacherService teacherService;
+        private TeacherService teacherService = TeacherService.GetInstance;
 
         public TeachersAddPage()
         {
             InitializeComponent();
-
-            teacherService = new TeacherService();
-
             InitializeComboBoxCathedra();
-
             btnAdd.Click += BtnAdd_Click;
         }
 
