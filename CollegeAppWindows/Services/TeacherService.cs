@@ -8,14 +8,10 @@ namespace CollegeAppWindows.Services
 {
     internal class TeacherService
     {
-        private Repository<Teacher> teacherRepository;
-        private Repository<TeacherAddress> teacherAddressRepository;
+        private Repository<Teacher> teacherRepository = Repository<Teacher>.GetInstance;
+        private Repository<TeacherAddress> teacherAddressRepository = Repository<TeacherAddress>.GetInstance;
 
-        public TeacherService() 
-        {
-            teacherRepository = new Repository<Teacher>();
-            teacherAddressRepository = new Repository<TeacherAddress>();
-        }
+        public TeacherService() { }
 
         public void Add(Teacher teacher, TeacherAddress teacherAddress)
         {

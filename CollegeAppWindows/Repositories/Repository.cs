@@ -10,10 +10,25 @@ namespace CollegeAppWindows.Repositories
     {
         private bool isView;
 
-        public Repository()
+        private static Repository<T>? instance;
+
+        private Repository()
         {
             isView = IsView();
             CreateProcedures();
+        }
+
+        public static Repository<T> GetInstance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Repository<T>();
+                }
+
+                return instance;
+            }
         }
 
         public int Add(T model, SqlTransaction? transaction = null)

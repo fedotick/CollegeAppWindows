@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using CollegeAppWindows.Services;
-using System.Data.SqlClient;
 
 namespace CollegeAppWindows.Pages
 {
@@ -15,14 +14,13 @@ namespace CollegeAppWindows.Pages
     /// </summary>
     public partial class TeachersAddPage : Page
     {
-        private Repository<Cathedra> cathedraRepository;
+        private Repository<Cathedra> cathedraRepository = Repository<Cathedra>.GetInstance;
         private TeacherService teacherService;
 
         public TeachersAddPage()
         {
             InitializeComponent();
 
-            cathedraRepository = new Repository<Cathedra>();
             teacherService = new TeacherService();
 
             InitializeComboBoxCathedra();

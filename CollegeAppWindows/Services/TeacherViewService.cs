@@ -6,7 +6,7 @@ namespace CollegeAppWindows.Services
 {
     internal class TeacherViewService
     {
-        private Repository<TeacherView> teacherViewRepository = new Repository<TeacherView>();
+        private Repository<TeacherView> teacherViewRepository = Repository<TeacherView>.GetInstance;
         public TeacherViewService() { }
 
         public List<TeacherView> GetAll()
