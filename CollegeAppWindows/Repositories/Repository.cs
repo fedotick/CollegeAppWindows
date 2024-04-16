@@ -1,20 +1,26 @@
-﻿using System;
+﻿using CollegeAppWindows.Utilities;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Reflection;
-using System.Text;
 
 namespace CollegeAppWindows.Repositories
 {
     public class Repository<T>
     {
-        public Repository() { }
+        private bool isView;
+
+        public Repository()
+        {
+            isView = IsView();
+            CreateProcedures();
+        }
 
         public int Add(T model, SqlTransaction? transaction = null)
         {
             int id = 0;
-            string query = GetQueryInsert();
-            
+            string query = $"sp_Insert{typeof(T).Name}";
+
             SqlConnection connection = DataBase.Instance.GetConnection();
 
             DataBase.Instance.OpenConnection();
@@ -23,7 +29,9 @@ namespace CollegeAppWindows.Repositories
                 ? new SqlCommand(query, connection)
                 : new SqlCommand(query, connection, transaction))
             {
-                AddParameters(command, model);
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlUtil.AddValuesToParameters(command, model);
                 id = Convert.ToInt32(command.ExecuteScalar());
             }
 
@@ -35,27 +43,64 @@ namespace CollegeAppWindows.Repositories
             return id;
         }
 
-        public T? GetById(int id, SqlTransaction? transaction = null)
+        public List<T> GetAll(SqlTransaction? transaction = null)
         {
-            T model = Activator.CreateInstance<T>();
+            List<T> models = new();
 
-            string query = $"SELECT * FROM [{typeof(T).Name}] WHERE Id = @Id";
+            string query = $"sp_Select{typeof(T).Name}";
 
             SqlConnection connection = DataBase.Instance.GetConnection();
 
             DataBase.Instance.OpenConnection();
 
-            using (SqlCommand command = transaction == null 
+            using (SqlCommand command = transaction == null
                 ? new SqlCommand(query, connection)
                 : new SqlCommand(query, connection, transaction))
             {
+                command.CommandType = CommandType.StoredProcedure;
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        T model = Activator.CreateInstance<T>();
+                        SqlUtil.MapValuesFromDataReader(model, reader);
+                        models.Add(model);
+                    }
+                }
+            }
+
+            if (transaction == null)
+            {
+                DataBase.Instance.CloseConnection();
+            }
+
+            return models;
+        }
+
+        public T? GetById(int id, SqlTransaction? transaction = null)
+        {
+            T model = Activator.CreateInstance<T>();
+
+            string query = $"sp_Select{typeof(T).Name}ById";
+
+            SqlConnection connection = DataBase.Instance.GetConnection();
+
+            DataBase.Instance.OpenConnection();
+
+            using (SqlCommand command = transaction == null
+                ? new SqlCommand(query, connection)
+                : new SqlCommand(query, connection, transaction))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
                 command.Parameters.AddWithValue("@Id", id);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        MapPropertiesFromDataReader(model, reader);
+                        SqlUtil.MapValuesFromDataReader(model, reader);
                     }
                     else
                     {
@@ -72,43 +117,10 @@ namespace CollegeAppWindows.Repositories
             return model;
         }
 
-        public List<T> GetAll(SqlTransaction? transaction = null)
-        {
-            List<T> models = new();
-
-            string query = $"SELECT * FROM [{typeof(T).Name}]";
-
-            SqlConnection connection = DataBase.Instance.GetConnection();
-
-            DataBase.Instance.OpenConnection();
-
-            using (SqlCommand command = transaction == null
-                ? new SqlCommand(query, connection)
-                : new SqlCommand(query, connection, transaction))
-            {
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        T model = Activator.CreateInstance<T>();
-                        MapPropertiesFromDataReader(model, reader);
-                        models.Add(model);
-                    }
-                }
-            }
-
-            if (transaction == null)
-            {
-                DataBase.Instance.CloseConnection();
-            }
-
-            return models;
-        }
-
         public void Update(T model, SqlTransaction? transaction = null)
         {
-            string query = GetQueryUpdate();
-            
+            string query = $"sp_Update{typeof(T).Name}";
+
             SqlConnection connection = DataBase.Instance.GetConnection();
 
             DataBase.Instance.OpenConnection();
@@ -117,7 +129,9 @@ namespace CollegeAppWindows.Repositories
                 ? new SqlCommand(query, connection)
                 : new SqlCommand(query, connection, transaction))
             {
-                AddParameters(command, model);
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlUtil.AddValuesToParameters(command, model);
                 command.ExecuteNonQuery();
             }
 
@@ -127,9 +141,9 @@ namespace CollegeAppWindows.Repositories
             }
         }
 
-        public void Delete(int id, SqlTransaction? transaction = null)
+        public void DeleteById(int id, SqlTransaction? transaction = null)
         {
-            string query = $"DELETE FROM [{typeof(T).Name}] WHERE Id = @Id";
+            string query = $"sp_Delete{typeof(T).Name}ById";
 
             SqlConnection connection = DataBase.Instance.GetConnection();
 
@@ -139,6 +153,8 @@ namespace CollegeAppWindows.Repositories
                 ? new SqlCommand(query, connection)
                 : new SqlCommand(query, connection, transaction))
             {
+                command.CommandType = CommandType.StoredProcedure;
+
                 command.Parameters.AddWithValue("@Id", id);
                 command.ExecuteNonQuery();
             }
@@ -149,70 +165,63 @@ namespace CollegeAppWindows.Repositories
             }
         }
 
-        private string GetQueryInsert()
+        private bool IsView()
         {
-            StringBuilder columns = new StringBuilder();
-            StringBuilder values = new StringBuilder();
+            string tableType = string.Empty;
 
-            PropertyInfo[] properties = typeof(T).GetProperties();
+            string query = $@"
+            SELECT TABLE_TYPE
+            FROM INFORMATION_SCHEMA.TABLES
+            WHERE TABLE_NAME = '{typeof(T).Name}';";
 
-            foreach (PropertyInfo property in properties)
+            DataBase.Instance.OpenConnection();
+
+            using (SqlCommand command = new SqlCommand(query, DataBase.Instance.GetConnection()))
             {
-                if (property != properties[0])
-                {
-                    columns.Append($"{property.Name}, ");
-                    values.Append($"@{property.Name}, ");
-                }
+                tableType = command.ExecuteScalar().ToString();
             }
 
-            columns.Length -= 2;
-            values.Length -= 2;
+            DataBase.Instance.CloseConnection();
 
-            return $"INSERT INTO [{typeof(T).Name}] ({columns}) VALUES ({values}); SELECT SCOPE_IDENTITY();";
-        }
-
-        private string GetQueryUpdate()
-        {
-            StringBuilder values = new StringBuilder();
-
-            PropertyInfo[] properties = typeof(T).GetProperties();
-
-            foreach (PropertyInfo property in properties)
+            if (tableType == "VIEW")
             {
-                if (property != properties[0])
-                {
-                    values.Append($"{property.Name} = @{property.Name}, ");
-                }
+                return true;
             }
 
-            values.Length -= 2;
-
-            return $"UPDATE [{typeof(T).Name}] SET {values} WHERE Id = @Id";
+            return false;
         }
 
-        private void AddParameters(SqlCommand command, T model)
+        private void CreateProcedures()
         {
-            Type modelType = typeof(T);
-            PropertyInfo[] properties = modelType.GetProperties();
+            string selectProcedureQuery = SqlUtil.GetSelectProcedureQuery<T>();
+            CreateProcedure(selectProcedureQuery);
 
-            foreach (PropertyInfo property in properties)
+            string selectProcedureQueryById = SqlUtil.GetSelectProcedureQueryById<T>();
+            CreateProcedure(selectProcedureQueryById);
+
+            if (!isView)
             {
-                command.Parameters.AddWithValue($"@{property.Name}", property.GetValue(model));
+                string insertProcedureQuery = SqlUtil.GetInsertProcedureQuery<T>();
+                CreateProcedure(insertProcedureQuery);
+
+                string updateProcedureQuery = SqlUtil.GetUpdateProcedureQuery<T>();
+                CreateProcedure(updateProcedureQuery); 
+            
+                string deleteProcedureQueryById = SqlUtil.GetDeleteProcedureQueryById<T>();
+                CreateProcedure(deleteProcedureQueryById);
             }
         }
 
-        private void MapPropertiesFromDataReader(T model, SqlDataReader reader)
+        private void CreateProcedure(string query)
         {
-            PropertyInfo[] properties = typeof(T).GetProperties();
+            DataBase.Instance.OpenConnection();
 
-            foreach (PropertyInfo property in properties)
+            using(SqlCommand command = new SqlCommand(query, DataBase.Instance.GetConnection()))
             {
-                string propertyName = property.Name;
-                int columnIndex = reader.GetOrdinal(propertyName);
-                object value = reader.GetValue(columnIndex);
-
-                property.SetValue(model, value);
+                command.ExecuteNonQuery();
             }
+
+            DataBase.Instance.CloseConnection();
         }
     }
 }
