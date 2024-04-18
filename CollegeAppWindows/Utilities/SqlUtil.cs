@@ -27,9 +27,9 @@ namespace CollegeAppWindows.Utilities
             FROM INFORMATION_SCHEMA.COLUMNS 
             WHERE TABLE_NAME = '{typeof(T).Name}';";
 
-            DataBase.Instance.OpenConnection();
+            DataBase.GetInstance.OpenConnection();
 
-            using (SqlCommand command = new SqlCommand(query, DataBase.Instance.GetConnection()))
+            using (SqlCommand command = new SqlCommand(query, DataBase.GetInstance.GetConnection()))
             {
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -42,7 +42,7 @@ namespace CollegeAppWindows.Utilities
                 }
             }
 
-            DataBase.Instance.CloseConnection();
+            DataBase.GetInstance.CloseConnection();
 
             return columns;
         }

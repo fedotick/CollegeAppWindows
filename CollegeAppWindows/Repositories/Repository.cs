@@ -36,9 +36,9 @@ namespace CollegeAppWindows.Repositories
             int id = 0;
             string query = $"sp_Insert{typeof(T).Name}";
 
-            SqlConnection connection = DataBase.Instance.GetConnection();
+            SqlConnection connection = DataBase.GetInstance.GetConnection();
 
-            DataBase.Instance.OpenConnection();
+            DataBase.GetInstance.OpenConnection();
 
             using (SqlCommand command = transaction == null
                 ? new SqlCommand(query, connection)
@@ -52,7 +52,7 @@ namespace CollegeAppWindows.Repositories
 
             if (transaction == null)
             {
-                DataBase.Instance.CloseConnection();
+                DataBase.GetInstance.CloseConnection();
             }
 
             return id;
@@ -64,9 +64,9 @@ namespace CollegeAppWindows.Repositories
 
             string query = $"sp_Select{typeof(T).Name}";
 
-            SqlConnection connection = DataBase.Instance.GetConnection();
+            SqlConnection connection = DataBase.GetInstance.GetConnection();
 
-            DataBase.Instance.OpenConnection();
+            DataBase.GetInstance.OpenConnection();
 
             using (SqlCommand command = transaction == null
                 ? new SqlCommand(query, connection)
@@ -87,7 +87,7 @@ namespace CollegeAppWindows.Repositories
 
             if (transaction == null)
             {
-                DataBase.Instance.CloseConnection();
+                DataBase.GetInstance.CloseConnection();
             }
 
             return models;
@@ -99,9 +99,9 @@ namespace CollegeAppWindows.Repositories
 
             string query = $"sp_Select{typeof(T).Name}ById";
 
-            SqlConnection connection = DataBase.Instance.GetConnection();
+            SqlConnection connection = DataBase.GetInstance.GetConnection();
 
-            DataBase.Instance.OpenConnection();
+            DataBase.GetInstance.OpenConnection();
 
             using (SqlCommand command = transaction == null
                 ? new SqlCommand(query, connection)
@@ -126,7 +126,7 @@ namespace CollegeAppWindows.Repositories
 
             if (transaction == null)
             {
-                DataBase.Instance.CloseConnection();
+                DataBase.GetInstance.CloseConnection();
             }
 
             return model;
@@ -136,9 +136,9 @@ namespace CollegeAppWindows.Repositories
         {
             string query = $"sp_Update{typeof(T).Name}";
 
-            SqlConnection connection = DataBase.Instance.GetConnection();
+            SqlConnection connection = DataBase.GetInstance.GetConnection();
 
-            DataBase.Instance.OpenConnection();
+            DataBase.GetInstance.OpenConnection();
 
             using (SqlCommand command = transaction == null
                 ? new SqlCommand(query, connection)
@@ -152,7 +152,7 @@ namespace CollegeAppWindows.Repositories
 
             if (transaction == null)
             {
-                DataBase.Instance.CloseConnection();
+                DataBase.GetInstance.CloseConnection();
             }
         }
 
@@ -160,9 +160,9 @@ namespace CollegeAppWindows.Repositories
         {
             string query = $"sp_Delete{typeof(T).Name}ById";
 
-            SqlConnection connection = DataBase.Instance.GetConnection();
+            SqlConnection connection = DataBase.GetInstance.GetConnection();
 
-            DataBase.Instance.OpenConnection();
+            DataBase.GetInstance.OpenConnection();
 
             using (SqlCommand command = transaction == null
                 ? new SqlCommand(query, connection)
@@ -176,7 +176,7 @@ namespace CollegeAppWindows.Repositories
 
             if (transaction == null)
             {
-                DataBase.Instance.CloseConnection();
+                DataBase.GetInstance.CloseConnection();
             }
         }
 
@@ -189,14 +189,14 @@ namespace CollegeAppWindows.Repositories
             FROM INFORMATION_SCHEMA.TABLES
             WHERE TABLE_NAME = '{typeof(T).Name}';";
 
-            DataBase.Instance.OpenConnection();
+            DataBase.GetInstance.OpenConnection();
 
-            using (SqlCommand command = new SqlCommand(query, DataBase.Instance.GetConnection()))
+            using (SqlCommand command = new SqlCommand(query, DataBase.GetInstance.GetConnection()))
             {
                 tableType = command.ExecuteScalar().ToString();
             }
 
-            DataBase.Instance.CloseConnection();
+            DataBase.GetInstance.CloseConnection();
 
             if (tableType == "VIEW")
             {
@@ -229,14 +229,14 @@ namespace CollegeAppWindows.Repositories
 
         private void CreateProcedure(string query)
         {
-            DataBase.Instance.OpenConnection();
+            DataBase.GetInstance.OpenConnection();
 
-            using(SqlCommand command = new SqlCommand(query, DataBase.Instance.GetConnection()))
+            using(SqlCommand command = new SqlCommand(query, DataBase.GetInstance.GetConnection()))
             {
                 command.ExecuteNonQuery();
             }
 
-            DataBase.Instance.CloseConnection();
+            DataBase.GetInstance.CloseConnection();
         }
     }
 }

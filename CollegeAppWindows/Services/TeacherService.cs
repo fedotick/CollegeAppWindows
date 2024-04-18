@@ -30,9 +30,9 @@ namespace CollegeAppWindows.Services
 
         public void Add(Teacher teacher, TeacherAddress teacherAddress)
         {
-            SqlConnection connection = DataBase.Instance.GetConnection();
+            SqlConnection connection = DataBase.GetInstance.GetConnection();
 
-            DataBase.Instance.OpenConnection();
+            DataBase.GetInstance.OpenConnection();
 
             using (SqlTransaction transaction = connection.BeginTransaction())
             {
@@ -52,7 +52,7 @@ namespace CollegeAppWindows.Services
                 }
             }
 
-            DataBase.Instance.CloseConnection();
+            DataBase.GetInstance.CloseConnection();
         }
     }
 }

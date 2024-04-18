@@ -16,7 +16,7 @@ namespace CollegeAppWindows
         /// <summary>
         /// Public static method for obtaining a single instance of a class.
         /// </summary>
-        public static DataBase Instance
+        public static DataBase GetInstance
         {
             get
             {
