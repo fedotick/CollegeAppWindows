@@ -1,5 +1,4 @@
 ﻿using CollegeAppWindows.Models;
-using CollegeAppWindows.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -14,7 +13,7 @@ namespace CollegeAppWindows.Pages
     /// </summary>
     public partial class TeachersAddPage : Page
     {
-        private Repository<Cathedra> cathedraRepository = Repository<Cathedra>.GetInstance;
+        private CathedraService cathedraService = CathedraService.GetInstance;
         private TeacherService teacherService = TeacherService.GetInstance;
 
         public TeachersAddPage()
@@ -30,7 +29,7 @@ namespace CollegeAppWindows.Pages
 
             cathedraList.Add(new Cathedra { Id = 0, Name = "Select cathedra" });
 
-            cathedraList.AddRange(cathedraRepository.GetAll());
+            cathedraList.AddRange(cathedraService.GetAll());
 
             comboBoxCathedra.SelectedValuePath = "Id";
             comboBoxCathedra.DisplayMemberPath = "Name";
@@ -78,10 +77,10 @@ namespace CollegeAppWindows.Pages
             string city = textBoxCity.Text;
             string street = textBoxStreet.Text;
             string houseNumber = textBoxHouseNumber.Text;
-            int? apartmentNumber = null;
+            short? apartmentNumber = null;
             try
             {
-                apartmentNumber = Convert.ToInt32(textBoxApartmentNumber.Text);
+                apartmentNumber = Convert.ToInt16(textBoxApartmentNumber.Text);
             } 
             catch (Exception ex)
             {

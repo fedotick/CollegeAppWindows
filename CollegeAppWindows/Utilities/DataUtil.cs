@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+/* 
+using System.Reflection.PortableExecutable;
+using System.Reflection; 
+*/
 
 namespace CollegeAppWindows.Utilities
 {
@@ -38,5 +42,63 @@ namespace CollegeAppWindows.Utilities
                 .Where(item => specificItems.Contains(selector(item)))
                 .ToList();
         }
+
+        /*
+        public static List<T> Search<T>(List<T> list, string searchValue)
+        {
+            //List<T> result = new List<T>();
+
+            //foreach (T item in list)
+            //{
+            //    FieldInfo[] fields = typeof(T).GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+            //    foreach (FieldInfo field in fields)
+            //    {
+            //        string fieldName = field.Name;
+            //        string fieldValue = field.GetValue(item).ToString();
+
+            //        if (fieldValue.Contains(searchValue))
+            //        {
+            //            result.Add(item);
+            //            break;
+            //        }
+            //    }
+            //}
+
+            //return result;
+
+            List<T> result = new List<T>();
+            HashSet<T> uniqueResults = new HashSet<T>();
+
+            foreach (T item in list)
+            {
+                try
+                {
+                    FieldInfo[] fields = typeof(T).GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                    foreach (FieldInfo field in fields)
+                    {
+                        object value = field.GetValue(item);
+
+                        if (value != null && value.ToString().IndexOf(searchValue, comparisonType) >= 0)
+                        {
+                            if (uniqueResults.Add(item))
+                            {
+                                result.Add(item);
+                            }
+
+                            break;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error processing item: {ex.Message}");
+                }
+            }
+
+            return result;
+        }
+        */
     }
 }

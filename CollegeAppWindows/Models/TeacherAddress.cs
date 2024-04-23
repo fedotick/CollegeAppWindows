@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CollegeAppWindows.Models
 {
@@ -27,6 +22,6 @@ namespace CollegeAppWindows.Models
         public string? HouseNumber { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Apartmen number must be at least 1")]
-        public int? ApartmentNumber { get; set; }
+        public short? ApartmentNumber { get; set; }
     }
 }

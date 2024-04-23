@@ -9,6 +9,17 @@
       Title="StudentsMainPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Students"/>
+            <Border BorderThickness="1" BorderBrush="#ebebeb"/>
+        </StackPanel>
+
+        <Frame Grid.Row="2" x:Name="ContentFrame"/>
     </Grid>
 </Page>

@@ -22,7 +22,13 @@
     <Compile Update="Pages\SpecialtiesMainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\StudentsAddPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\StudentsMainPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\StudentsShowPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\TeachersAddPage.xaml.cs">
@@ -54,7 +60,13 @@
     <Page Update="Pages\SpecialtiesMainPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Pages\StudentsAddPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Pages\StudentsMainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\StudentsShowPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\TeachersAddPage.xaml">

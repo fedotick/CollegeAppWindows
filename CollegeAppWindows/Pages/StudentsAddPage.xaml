@@ -1,0 +1,62 @@
+﻿<Page x:Class="CollegeAppWindows.Pages.StudentsAddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeAppWindows.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="800"
+      Title="StudentsAddPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Full name"/>
+            <TextBox x:Name="textBoxFullName"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="IDNP"/>
+            <TextBox x:Name="textBoxIDNP"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Group"/>
+            <ComboBox x:Name="comboBoxGroup"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Subgroup number"/>
+            <TextBox x:Name="textBoxSubgroupNumber"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Card number"/>
+            <TextBox x:Name="textBoxCardNumber"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Date of birth"/>
+            <TextBox x:Name="textBoxDateOfBirth"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Phone number"/>
+            <TextBox x:Name="textBoxPhoneNumber"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Email"/>
+            <TextBox x:Name="textBoxEmail"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="3" Grid.Row="1">
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Region"/>
+            <TextBox x:Name="textBoxRegion"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="City"/>
+            <TextBox x:Name="textBoxCity"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Street"/>
+            <TextBox x:Name="textBoxStreet"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="House number"/>
+            <TextBox x:Name="textBoxHouseNumber"/>
+            <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Apartment number"/>
+            <TextBox x:Name="textBoxApartmentNumber"/>
+        </StackPanel>
+
+        <Button x:Name="btnAdd" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Content="Add"/>
+    </Grid>
+</Page>
