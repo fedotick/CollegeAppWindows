@@ -69,10 +69,10 @@
             <Button x:Name="btnAddNewEntry" Grid.Column="2" Content="Add New Entry"/>
         </Grid>
 
-        <DataGrid Grid.Column="1" Grid.Row="3" x:Name="dataGrid">
+        <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="3">
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem x:Name="contextMenuItemEdit" Header="Edit"/>
+                    <MenuItem x:Name="contextMenuItemEdit" Header="Edit" Click="ContextMenuEdit_Click"/>
                     <MenuItem x:Name="contextMenuItemDelete" Header="Delete"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>

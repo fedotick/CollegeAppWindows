@@ -113,12 +113,24 @@ namespace CollegeAppWindows.Pages
             parentFrame.Navigate(new Uri("Pages/TeachersAddPage.xaml", UriKind.Relative));
         }
 
+        private void ContextMenuEdit_Click(object sender, RoutedEventArgs e)
+        {
+            TeacherView? teacherView = dataGrid.SelectedItem as TeacherView;
+
+            if (teacherView != null)
+            {
+                Frame parentFrame = GetParentFrame(dataGrid);
+
+                parentFrame.Navigate(new TeachersAddPage(teacherView));
+            }
+        }
+
         private Frame GetParentFrame(DependencyObject child)
         {
             DependencyObject parent = VisualTreeHelper.GetParent(child);
 
             while (!(parent is Frame))
-            {
+                {
                 parent = VisualTreeHelper.GetParent(parent);
             }
 

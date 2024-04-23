@@ -145,8 +145,7 @@ namespace CollegeAppWindows.Repositories
                 : new SqlCommand(query, connection, transaction))
             {
                 command.CommandType = CommandType.StoredProcedure;
-
-                SqlUtil.AddValuesToParameters(command, model);
+                SqlUtil.AddValuesToParameters(command, model, false);
                 command.ExecuteNonQuery();
             }
 
@@ -169,7 +168,6 @@ namespace CollegeAppWindows.Repositories
                 : new SqlCommand(query, connection, transaction))
             {
                 command.CommandType = CommandType.StoredProcedure;
-
                 command.Parameters.AddWithValue("@Id", id);
                 command.ExecuteNonQuery();
             }

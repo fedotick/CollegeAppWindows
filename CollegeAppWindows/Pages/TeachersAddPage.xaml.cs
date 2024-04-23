@@ -16,11 +16,25 @@ namespace CollegeAppWindows.Pages
         private CathedraService cathedraService = CathedraService.GetInstance;
         private TeacherService teacherService = TeacherService.GetInstance;
 
+        private TeacherView? teacherView = null;
+
         public TeachersAddPage()
         {
             InitializeComponent();
             InitializeComboBoxCathedra();
-            btnAdd.Click += BtnAdd_Click;
+            btn.Click += BtnAdd_Click;
+            btn.Content = "Add";
+        }
+
+        public TeachersAddPage(TeacherView teacherView)
+        {
+            InitializeComponent();
+            InitializeComboBoxCathedra();
+            btn.Click += BtnUpdate_Click;
+            btn.Content = "Update";
+
+            this.teacherView = teacherView;
+            FillFields();
         }
 
         private void InitializeComboBoxCathedra()
@@ -38,7 +52,23 @@ namespace CollegeAppWindows.Pages
             comboBoxCathedra.SelectedIndex = 0;
         }
 
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        private void FillFields()
+        {
+            textBoxFullName.Text = teacherView.FullName;
+            comboBoxCathedra.SelectedValue = teacherView.CathedraId;
+            textBoxExperience.Text = teacherView.Experience.ToString();
+            textBoxDateOfBirth.Text = teacherView.DateOfBirth?.ToString("dd.MM.yyyy");
+            textBoxPhoneNumber.Text = teacherView.PhoneNumber;
+            textBoxEmail.Text = teacherView.Email;
+
+            textBoxRegion.Text = teacherView.Region;
+            textBoxCity.Text = teacherView.City;
+            textBoxStreet.Text = teacherView.Street;
+            textBoxHouseNumber.Text = teacherView.HouseNumber;
+            textBoxApartmentNumber.Text = teacherView.ApartmentNumber.ToString();
+        }
+
+        private Teacher GetTeacherFromFields()
         {
             string fullName = textBoxFullName.Text;
             int cathedraId = Convert.ToInt32(comboBoxCathedra.SelectedValue);
@@ -64,15 +94,20 @@ namespace CollegeAppWindows.Pages
             string email = textBoxEmail.Text;
 
             Teacher teacher = new Teacher
-                {
-                    FullName = fullName,
-                    CathedraId = cathedraId,
-                    Experience = experience,
-                    DateOfBirth = dateOfBirth,
-                    PhoneNumber = phoneNumber,
-                    Email = email
+            {
+                FullName = fullName,
+                CathedraId = cathedraId,
+                Experience = experience,
+                DateOfBirth = dateOfBirth,
+                PhoneNumber = phoneNumber,
+                Email = email
             };
 
+            return teacher;
+        }
+
+        private TeacherAddress GetTeacherAddressFromFields()
+        {
             string region = textBoxRegion.Text;
             string city = textBoxCity.Text;
             string street = textBoxStreet.Text;
@@ -81,7 +116,7 @@ namespace CollegeAppWindows.Pages
             try
             {
                 apartmentNumber = Convert.ToInt16(textBoxApartmentNumber.Text);
-            } 
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -96,7 +131,29 @@ namespace CollegeAppWindows.Pages
                 ApartmentNumber = apartmentNumber
             };
 
+            return teacherAddress;
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Teacher teacher = GetTeacherFromFields();
+            TeacherAddress teacherAddress = GetTeacherAddressFromFields();
+            
             teacherService.Add(teacher, teacherAddress);
+
+            TeachersShow();
+        }
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            Teacher teacher = GetTeacherFromFields();
+            teacher.Id = teacherView.Id;
+            teacher.TeacherAddressId = teacherView.TeacherAddressId;
+
+            TeacherAddress teacherAddress = GetTeacherAddressFromFields();
+            teacherAddress.Id = teacherView.TeacherAddressId;
+
+            teacherService.Update(teacher, teacherAddress);
 
             TeachersShow();
         }
