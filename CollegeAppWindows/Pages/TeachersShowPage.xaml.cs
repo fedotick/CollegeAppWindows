@@ -14,6 +14,7 @@ namespace CollegeAppWindows.Pages
     /// </summary>
     public partial class TeachersShowPage : Page
     {
+        private TeacherService teacherService = TeacherService.GetInstance;
         private TeacherViewService teacherViewService = TeacherViewService.GetInstance;
         private List<TeacherView> teacherViews;
 
@@ -68,10 +69,16 @@ namespace CollegeAppWindows.Pages
 
         private void ShowTeachers(List<TeacherView> teacherViews)
         {
+            dataGrid.ItemsSource = null;
             dataGrid.ItemsSource = teacherViews;
         }
 
         private void CheckBox_Changed(object sender, EventArgs e)
+        {
+            FilterTeacherViews();
+        }
+
+        private void FilterTeacherViews()
         {
             List<TeacherView> filteredTeacherViews = teacherViews;
 
@@ -122,6 +129,19 @@ namespace CollegeAppWindows.Pages
                 Frame parentFrame = GetParentFrame(dataGrid);
 
                 parentFrame.Navigate(new TeachersAddPage(teacherView));
+            }
+        }
+
+        private void ContextMenuDelete_Click(object sender, RoutedEventArgs e)
+        {
+            TeacherView? teacherView = dataGrid.SelectedItem as TeacherView;
+
+            if (teacherView != null)
+            {
+                teacherService.Delete(teacherView.Id);
+
+                teacherViews.Remove(teacherView);
+                FilterTeacherViews();
             }
         }
 

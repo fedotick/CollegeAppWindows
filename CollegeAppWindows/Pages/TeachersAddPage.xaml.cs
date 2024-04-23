@@ -72,10 +72,10 @@ namespace CollegeAppWindows.Pages
         {
             string fullName = textBoxFullName.Text;
             int cathedraId = Convert.ToInt32(comboBoxCathedra.SelectedValue);
-            int? experience = null;
+            byte? experience = null;
             try
             {
-                experience = Convert.ToInt32(textBoxExperience.Text);
+                experience = Convert.ToByte(textBoxExperience.Text);
             }
             catch (Exception ex)
             {

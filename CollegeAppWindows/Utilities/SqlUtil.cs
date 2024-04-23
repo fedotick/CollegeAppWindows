@@ -103,7 +103,7 @@ namespace CollegeAppWindows.Utilities
             return $@"
             SELECT * 
             FROM [{typeof(T).Name}]
-            WHERE Id = Id;";
+            WHERE Id = @Id;";
         }
 
         public static string GetUpdateQuery<T>()

@@ -80,5 +80,33 @@ namespace CollegeAppWindows.Services
 
             DataBase.GetInstance.CloseConnection();
         }
+
+        public void Delete(int id)
+        {
+            Teacher teacher = teacherRepository.GetById(id);
+
+            SqlConnection connection = DataBase.GetInstance.GetConnection();
+
+            DataBase.GetInstance.OpenConnection();
+
+            using (SqlTransaction transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    teacherRepository.DeleteById(id, transaction);
+                    teacherAddressRepository.DeleteById(teacher.TeacherAddressId, transaction);
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+            DataBase.GetInstance.CloseConnection();
+        }
     }
 }
