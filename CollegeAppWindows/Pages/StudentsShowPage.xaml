@@ -73,7 +73,7 @@
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="contextMenuItemEdit" Header="Edit"/>
-                    <MenuItem x:Name="contextMenuItemDelete" Header="Delete"/>
+                    <MenuItem x:Name="contextMenuItemDelete" Header="Delete" Click="ContextMenuDelete_Click" />
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>

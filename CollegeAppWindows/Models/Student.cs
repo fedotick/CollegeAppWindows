@@ -16,7 +16,7 @@ namespace CollegeAppWindows.Models
         public string? IDNP { get; set; }
 
         [Required(ErrorMessage = "Group is required!")]
-        public int? GroupId { get; set; }
+        public int GroupId { get; set; }
 
         [Required(ErrorMessage = "Subgroup number is required!")]
         [Range(1, 2, ErrorMessage = "Subgroup number must be between 1 and 2!")]
@@ -30,7 +30,7 @@ namespace CollegeAppWindows.Models
         public DateTime? DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "Address is required!")]
-        public int? StudentAddressId { get; set; }
+        public int StudentAddressId { get; set; }
 
         [RegularExpression(@"^\+373\d{8}$", ErrorMessage = "Phone number must start with +373 and contain 8 additional digits")]
         public string? PhoneNumber { get; set; }

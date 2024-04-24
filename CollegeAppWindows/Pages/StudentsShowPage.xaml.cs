@@ -14,8 +14,11 @@ namespace CollegeAppWindows.Pages
     /// </summary>
     public partial class StudentsShowPage : Page
     {
+        private StudentService studentService = StudentService.GetInstance;
         private StudentViewService studentViewService = StudentViewService.GetInstance;
+
         private List<StudentView> studentViews;
+        private List<StudentView> filteredStudentViews;
 
         // Filter properties
         private HashSet<string> availableGroupNames = new HashSet<string>();
@@ -36,6 +39,7 @@ namespace CollegeAppWindows.Pages
             DataContext = this;
 
             studentViews = studentViewService.GetAll();
+            filteredStudentViews = studentViews;
 
             InitializeComboBoxes();
             ShowStudents();
@@ -65,17 +69,18 @@ namespace CollegeAppWindows.Pages
 
         private void ShowStudents()
         {
-            dataGrid.ItemsSource = studentViews;
-        }
-
-        private void ShowStudents(List<StudentView> studentViews)
-        {
-            dataGrid.ItemsSource = studentViews;
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = filteredStudentViews;
         }
 
         private void CheckBox_Changed(object sender, EventArgs e)
         {
-            List<StudentView> filteredStudentViews = studentViews;
+            FilterStudentViews();
+        }
+
+        private void FilterStudentViews()
+        {
+            filteredStudentViews = studentViews;
 
             List<SelectableItem>? specificCathedraNames = comboBoxCathedra.ItemsSource as List<SelectableItem>;
             HashSet<string> specificCathedraNames1 = SelectableItemUtil.GetCheckedItemsHashSet(specificCathedraNames);
@@ -105,7 +110,7 @@ namespace CollegeAppWindows.Pages
                 filteredStudentViews = DataUtil.FilterBySpecificItems(filteredStudentViews, specificStreets1, t => t.Street);
             }
 
-            ShowStudents(filteredStudentViews);
+            ShowStudents();
         }
 
         private void BtnAddNewEntry_Click(object sender, RoutedEventArgs e)
@@ -113,6 +118,31 @@ namespace CollegeAppWindows.Pages
             Frame parentFrame = GetParentFrame(sender as DependencyObject);
 
             parentFrame.Navigate(new Uri("Pages/StudentsAddPage.xaml", UriKind.Relative));
+        }
+
+        private void ContextMenuEdit_Click(object sender, RoutedEventArgs e)
+        {
+            StudentView? studentView = dataGrid.SelectedItem as StudentView;
+
+            if (studentView != null)
+            {
+                Frame parentFrame = GetParentFrame(dataGrid);
+
+                // parentFrame.Navigate(new StudentAddPage(studentView));
+            }
+        }
+
+        private void ContextMenuDelete_Click(object sender, RoutedEventArgs e)
+        {
+            StudentView? studentView = dataGrid.SelectedItem as StudentView;
+
+            if (studentView != null)
+            {
+                studentService.Delete(studentView.Id);
+
+                studentViews.Remove(studentView);
+                FilterStudentViews();
+            }
         }
 
         private Frame GetParentFrame(DependencyObject child)
