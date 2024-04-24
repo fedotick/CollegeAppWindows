@@ -128,7 +128,7 @@ namespace CollegeAppWindows.Pages
             {
                 Frame parentFrame = GetParentFrame(dataGrid);
 
-                // parentFrame.Navigate(new StudentAddPage(studentView));
+                parentFrame.Navigate(new StudentsAddPage(studentView));
             }
         }
 

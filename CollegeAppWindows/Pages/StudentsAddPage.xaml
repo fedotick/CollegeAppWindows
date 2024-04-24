@@ -57,6 +57,6 @@
             <TextBox x:Name="textBoxApartmentNumber"/>
         </StackPanel>
 
-        <Button x:Name="btnAdd" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Content="Add"/>
+        <Button x:Name="btn" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3"/>
     </Grid>
 </Page>

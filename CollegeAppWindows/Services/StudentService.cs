@@ -55,6 +55,32 @@ namespace CollegeAppWindows.Services
             DataBase.GetInstance.CloseConnection();
         }
 
+        public void Update(Student student, StudentAddress studentAddress)
+        {
+            SqlConnection connection = DataBase.GetInstance.GetConnection();
+
+            DataBase.GetInstance.OpenConnection();
+
+            using (SqlTransaction transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    studentAddressRepository.Update(studentAddress, transaction);
+                    studentRepository.Update(student, transaction);
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+            DataBase.GetInstance.CloseConnection();
+        }
+
         public void Delete(int id)
         {
             Student student = studentRepository.GetById(id);

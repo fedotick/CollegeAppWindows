@@ -16,11 +16,25 @@ namespace CollegeAppWindows.Pages
         private GroupService groupService = GroupService.GetInstance;
         private StudentService studentService = StudentService.GetInstance;
 
+        private StudentView? studentView = null;
+
         public StudentsAddPage()
         {
             InitializeComponent();
             InitializeComboBoxGroup();
-            btnAdd.Click += BtnAdd_Click;
+            btn.Click += BtnAdd_Click;
+            btn.Content = "Add";
+        }
+
+        public StudentsAddPage(StudentView studentView)
+        {
+            InitializeComponent();
+            InitializeComboBoxGroup();
+            btn.Click += BtnUpdate_Click;
+            btn.Content = "Update";
+
+            this.studentView = studentView;
+            FillFields();
         }
 
         private void InitializeComboBoxGroup()
@@ -38,7 +52,25 @@ namespace CollegeAppWindows.Pages
             comboBoxGroup.SelectedIndex = 0;
         }
 
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        private void FillFields()
+        {
+            textBoxFullName.Text = studentView.FullName;
+            textBoxIDNP.Text = studentView.IDNP;
+            comboBoxGroup.SelectedValue = studentView.GroupId;
+            textBoxSubgroupNumber.Text = studentView.SubgroupNumber.ToString();
+            textBoxCardNumber.Text = studentView.CardNumber.ToString();
+            textBoxDateOfBirth.Text = studentView.DateOfBirth?.ToString("dd.MM.yyyy");
+            textBoxPhoneNumber.Text = studentView.PhoneNumber;
+            textBoxEmail.Text = studentView.Email;
+
+            textBoxRegion.Text = studentView.Region;
+            textBoxCity.Text = studentView.City;
+            textBoxStreet.Text = studentView.Street;
+            textBoxHouseNumber.Text = studentView.HouseNumber;
+            textBoxApartmentNumber.Text = studentView.ApartmentNumber.ToString();
+        }
+
+        private Student GetStudentFromFields()
         {
             string fullName = textBoxFullName.Text;
             string idnp = textBoxIDNP.Text;
@@ -47,8 +79,8 @@ namespace CollegeAppWindows.Pages
             try
             {
                 subgroupNumber = Convert.ToByte(textBoxSubgroupNumber.Text);
-            } 
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -57,7 +89,7 @@ namespace CollegeAppWindows.Pages
             {
                 cardNumber = Convert.ToInt16(textBoxCardNumber.Text);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -85,6 +117,11 @@ namespace CollegeAppWindows.Pages
                 Email = email
             };
 
+            return student;
+        }
+
+        private StudentAddress GetStudentAddressFromFields()
+        {
             string region = textBoxRegion.Text;
             string city = textBoxCity.Text;
             string street = textBoxStreet.Text;
@@ -108,7 +145,29 @@ namespace CollegeAppWindows.Pages
                 ApartmentNumber = apartmentNumber
             };
 
+            return studentAddress;
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Student student = GetStudentFromFields();
+            StudentAddress studentAddress = GetStudentAddressFromFields();
+
             studentService.Add(student, studentAddress);
+
+            StudentsShow();
+        }
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            Student student = GetStudentFromFields();
+            student.Id = studentView.Id;
+            student.StudentAddressId = studentView.StudentAddressId;
+
+            StudentAddress studentAddress = GetStudentAddressFromFields();
+            studentAddress.Id = studentView.StudentAddressId;
+
+            studentService.Update(student, studentAddress);
 
             StudentsShow();
         }
