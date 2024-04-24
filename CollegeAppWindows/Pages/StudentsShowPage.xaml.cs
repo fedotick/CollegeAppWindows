@@ -71,6 +71,7 @@ namespace CollegeAppWindows.Pages
         {
             dataGrid.ItemsSource = null;
             dataGrid.ItemsSource = filteredStudentViews;
+            textBlockEntries.Text = $"Entries: {filteredStudentViews.Count}";
         }
 
         private void CheckBox_Changed(object sender, EventArgs e)
