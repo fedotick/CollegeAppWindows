@@ -16,7 +16,9 @@ namespace CollegeAppWindows.Pages
     {
         private TeacherService teacherService = TeacherService.GetInstance;
         private TeacherViewService teacherViewService = TeacherViewService.GetInstance;
+
         private List<TeacherView> teacherViews;
+        private List<TeacherView> filteredTeacherViews;
 
         // Filter properties
         private HashSet<string> availableCathedraNames = new HashSet<string>();
@@ -37,6 +39,7 @@ namespace CollegeAppWindows.Pages
             DataContext = this;
 
             teacherViews = teacherViewService.GetAll();
+            filteredTeacherViews = teacherViews;
 
             InitializeComboBoxes();
             ShowTeachers();
@@ -64,13 +67,9 @@ namespace CollegeAppWindows.Pages
 
         private void ShowTeachers()
         {
-            dataGrid.ItemsSource = teacherViews;
-        }
-
-        private void ShowTeachers(List<TeacherView> teacherViews)
-        {
             dataGrid.ItemsSource = null;
-            dataGrid.ItemsSource = teacherViews;
+            dataGrid.ItemsSource = filteredTeacherViews;
+            textBlockEntries.Text = $"Entries: {filteredTeacherViews.Count}";
         }
 
         private void CheckBox_Changed(object sender, EventArgs e)
@@ -80,7 +79,7 @@ namespace CollegeAppWindows.Pages
 
         private void FilterTeacherViews()
         {
-            List<TeacherView> filteredTeacherViews = teacherViews;
+            filteredTeacherViews = teacherViews;
 
             List<SelectableItem>? specificCathedraNames = comboBoxCathedra.ItemsSource as List<SelectableItem>;
             HashSet<string> specificCathedraNames1 = SelectableItemUtil.GetCheckedItemsHashSet(specificCathedraNames);
@@ -110,7 +109,7 @@ namespace CollegeAppWindows.Pages
                 filteredTeacherViews = DataUtil.FilterBySpecificItems(filteredTeacherViews, specificStreets1, t => t.Street);
             }
 
-            ShowTeachers(filteredTeacherViews);
+            ShowTeachers();
         }
 
         private void BtnAddNewEntry_Click(object sender, RoutedEventArgs e)
