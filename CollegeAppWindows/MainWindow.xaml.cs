@@ -1,5 +1,7 @@
 ﻿using CollegeAppWindows.Models;
+using CollegeAppWindows.Reports;
 using CollegeAppWindows.Repositories;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -24,11 +26,15 @@ namespace CollegeAppWindows
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ReportViewer MyReportViewer;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            MainFrame.Navigate(new Uri("Pages/MainPage.xaml", UriKind.Relative));
+            TeachersReport teachersReport = new TeachersReport();
+            teachersReport.Show();
+            //MainFrame.Navigate(new Uri("Pages/MainPage.xaml", UriKind.Relative));
         }
     }
 }
