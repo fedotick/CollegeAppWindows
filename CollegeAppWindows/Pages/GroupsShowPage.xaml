@@ -1,0 +1,66 @@
+﻿<Page x:Class="CollegeAppWindows.Pages.GroupsShowPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeAppWindows.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GroupsShowPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="65"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+               
+            </StackPanel>
+
+            <!--<TextBox x:Name="textBoxSearch" Grid.Column="0" Style="{StaticResource TextBoxStyleSearch}"/>-->
+
+            <TextBlock x:Name="textBlockEntries" Grid.Column="1" FontSize="18" VerticalAlignment="Center" Margin="10 0"/>
+
+            <Button x:Name="btnAddNewEntry" Grid.Column="2" Content="Add New Entry"/>
+        </Grid>
+
+        <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="3" AutoGenerateColumns="False">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="contextMenuItemEdit" Header="Edit"/>
+                    <MenuItem x:Name="contextMenuItemDelete" Header="Delete"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Full name" Binding="{Binding FullName}" />
+                <DataGridTextColumn Header="Cathedra" Binding="{Binding CathedraName}" />
+                <DataGridTextColumn Header="Exp" Binding="{Binding Experience}" />
+                <DataGridTextColumn Header="Date of birth" Binding="{Binding DateOfBirth, StringFormat={}{0:MM.dd.yyyy}}" />
+                <DataGridTextColumn Header="Region" Binding="{Binding Region}" />
+                <DataGridTextColumn Header="City" Binding="{Binding City}" />
+                <DataGridTextColumn Header="Street" Binding="{Binding Street}" />
+                <DataGridTextColumn Header="House" Binding="{Binding HouseNumber}" />
+                <DataGridTextColumn Header="Apt" Binding="{Binding ApartmentNumber}" />
+                <DataGridTextColumn Header="Phone" Binding="{Binding PhoneNumber}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -51,3 +51,5 @@ C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\Colleg
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\StudentsShowPage.baml
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\StudentsAddPage.g.cs
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\StudentsAddPage.baml
+C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\GroupsShowPage.g.cs
+C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\GroupsShowPage.baml

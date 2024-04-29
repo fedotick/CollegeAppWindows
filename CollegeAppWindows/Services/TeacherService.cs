@@ -1,6 +1,8 @@
 ﻿using CollegeAppWindows.Models;
 using CollegeAppWindows.Repositories;
+using CollegeAppWindows.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows;
 
@@ -30,6 +32,9 @@ namespace CollegeAppWindows.Services
 
         public void Add(Teacher teacher, TeacherAddress teacherAddress)
         {
+            if (!isValidate(teacher)) return;
+            if (!isValidate(teacherAddress)) return;
+
             SqlConnection connection = DataBase.GetInstance.GetConnection();
 
             DataBase.GetInstance.OpenConnection();
@@ -57,6 +62,9 @@ namespace CollegeAppWindows.Services
 
         public void Update(Teacher teacher, TeacherAddress teacherAddress)
         {
+            if (!isValidate(teacher)) return;
+            if (!isValidate(teacherAddress)) return;
+
             SqlConnection connection = DataBase.GetInstance.GetConnection();
 
             DataBase.GetInstance.OpenConnection();
@@ -107,6 +115,29 @@ namespace CollegeAppWindows.Services
             }
 
             DataBase.GetInstance.CloseConnection();
+        }
+
+        public bool isValidate<T>(T model)
+        {
+            Dictionary<string, List<string>> errors = ValidationUtil.ValidateModel(model);
+
+            if (errors != null && errors.Count > 0)
+            {
+                foreach (var errorEntry in errors)
+                {
+                    string propertyName = errorEntry.Key;
+                    List<string> errorMessages = errorEntry.Value;
+
+                    foreach (string errorMessage in errorMessages)
+                    {
+                        MessageBox.Show($"- {errorMessage}", propertyName);
+                    }
+                }
+
+                return false;
+            }
+
+            return true;
         }
     }
 }
