@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CollegeAppWindows")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dba1322b84177c18ec35d2b8cd8e57cc39fa8821")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be3b7382db510885161b8d4170ec3470eec362ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("CollegeAppWindows")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CollegeAppWindows")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

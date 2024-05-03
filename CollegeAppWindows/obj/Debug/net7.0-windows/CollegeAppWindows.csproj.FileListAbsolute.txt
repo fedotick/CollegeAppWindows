@@ -53,3 +53,6 @@ C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\Colleg
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\StudentsAddPage.baml
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\GroupsShowPage.g.cs
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\GroupsShowPage.baml
+C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\bin\Debug\net7.0-windows\MaterialDesignColors.dll
+C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\bin\Debug\net7.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\bin\Debug\net7.0-windows\Microsoft.Xaml.Behaviors.dll

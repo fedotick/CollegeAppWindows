@@ -13,6 +13,9 @@
     <Compile Update="Pages\GroupsMainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\LogInPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\MainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +52,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\GroupsMainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\LogInPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\MainPage.xaml">
