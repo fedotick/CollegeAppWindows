@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace CollegeAppWindows.Utilities
 {
@@ -36,6 +33,22 @@ namespace CollegeAppWindows.Utilities
             }
 
             return new Dictionary<string, List<string>>();
+        }
+
+        public static List<string> ValidateProperty<T>(T model, string propertyName)
+        {
+            var propertyInfo = typeof(T).GetProperty(propertyName);
+            if (propertyInfo == null)
+            {
+                throw new ArgumentException($"Property {propertyName} does not exist on type {typeof(T).Name}");
+            }
+
+            var validationContext = new ValidationContext(model) { MemberName = propertyName };
+            var validationResults = new List<ValidationResult>();
+
+            Validator.TryValidateProperty(propertyInfo.GetValue(model), validationContext, validationResults);
+
+            return validationResults.Select(result => result.ErrorMessage).ToList();
         }
     }
 }

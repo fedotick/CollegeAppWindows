@@ -155,5 +155,5 @@
         <Setter Property="Margin" Value="0 0 0 25"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
-
+    
 </ResourceDictionary>

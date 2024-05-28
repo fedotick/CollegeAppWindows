@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using CollegeAppWindows.Services;
+using CollegeAppWindows.Utilities;
+using System.Linq;
 
 namespace CollegeAppWindows.Pages
 {
@@ -66,6 +68,158 @@ namespace CollegeAppWindows.Pages
             textBoxStreet.Text = teacherView.Street;
             textBoxHouseNumber.Text = teacherView.HouseNumber;
             textBoxApartmentNumber.Text = teacherView.ApartmentNumber.ToString();
+        }
+
+        private void TextBoxFullName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateTextBox(textBoxFullName, textBlockFullName, nameof(Teacher.FullName));
+        }
+
+        private void ComboBoxCathedra_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (comboBoxCathedra.SelectedIndex == 0)
+
+            {
+                textBlockCathedra.Text = "Cathedra is required!";
+            }
+            else
+            {
+                textBlockCathedra.Text = "";
+            }
+        }
+
+        private void TextBoxExperience_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateTextBox(textBoxExperience, textBlockExperience, nameof(Teacher.Experience));
+        }
+
+        private void TextBoxDateOfBirth_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateTextBox(textBoxDateOfBirth, textBlockDateOfBirth, nameof(Teacher.DateOfBirth));
+        }
+
+        private void TextBoxPhoneNumber_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateTextBox(textBoxPhoneNumber, textBlockPhoneNumber, nameof(Teacher.PhoneNumber));
+        }
+
+        private void TextBoxEmail_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateTextBox(textBoxEmail, textBlockEmail, nameof(Teacher.Email));
+        }
+
+        private void TextBoxRegion_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateTextBox(textBoxRegion, textBlockRegion, nameof(TeacherAddress.Region));
+        }
+
+        private void TextBoxCity_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateTextBox(textBoxCity, textBlockCity, nameof(TeacherAddress.City));
+        }
+
+        private void TextBoxStreet_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateTextBox(textBoxStreet, textBlockStreet, nameof(TeacherAddress.Street));
+        }
+
+        private void TextBoxHouseNumber_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateTextBox(textBoxHouseNumber, textBlockHouseNumber, nameof(TeacherAddress.HouseNumber));
+        }
+
+        private void TextBoxApartmentNumber_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidateTextBox(textBoxApartmentNumber, textBlockApartmentNumber, nameof(TeacherAddress.ApartmentNumber));
+        }
+
+        private void ValidateTextBox(TextBox textBox, TextBlock textBlock, string propertyName)
+        {
+            string? text = textBox.Text != "" ? textBox.Text : null;
+
+            List<string> errors = new List<string>();
+
+            switch (propertyName)
+            {
+                case nameof(Teacher.FullName):
+                    errors = ValidationUtil.ValidateProperty(new Teacher { FullName = text }, propertyName);
+                    break;
+                case nameof(Teacher.Experience):
+                    byte? experience = null;
+                    try
+                    {
+                        if (text != null)
+                        {
+                            experience = Convert.ToByte(text);
+                        }
+                            
+                        errors = ValidationUtil.ValidateProperty(new Teacher { Experience = experience }, propertyName);
+                    }
+                    catch
+                    {
+                        errors.Add("Incorect experience!");
+                    }
+                    break;
+                case nameof(Teacher.DateOfBirth):
+                    DateTime? dateOfBirth = null;
+                    try
+                    {
+                        if (text != null)
+                        {
+                            dateOfBirth = DateTime.ParseExact(text, "dd.MM.yyyy", null);
+                        }
+                            
+                        errors = ValidationUtil.ValidateProperty(new Teacher { DateOfBirth = dateOfBirth }, propertyName);
+                    }
+                    catch
+                    {
+                        errors.Add("Incorect date!");
+                    }
+                    break;
+                case nameof(Teacher.PhoneNumber):
+                    errors = ValidationUtil.ValidateProperty(new Teacher { PhoneNumber = text }, propertyName);
+                    break;
+                case nameof(Teacher.Email):
+                    errors = ValidationUtil.ValidateProperty(new Teacher { Email = text }, propertyName);
+                    break;
+                case nameof(TeacherAddress.Region):
+                    errors = ValidationUtil.ValidateProperty(new TeacherAddress { Region = text }, propertyName);
+                    break;
+                case nameof(TeacherAddress.City):
+                    errors = ValidationUtil.ValidateProperty(new TeacherAddress { City = text }, propertyName);
+                    break;
+                case nameof(TeacherAddress.Street):
+                    errors = ValidationUtil.ValidateProperty(new TeacherAddress { Street = text }, propertyName);
+                    break;
+                case nameof(TeacherAddress.HouseNumber):
+                    errors = ValidationUtil.ValidateProperty(new TeacherAddress { HouseNumber = text }, propertyName);
+                    break;
+                case nameof(TeacherAddress.ApartmentNumber):
+                    short? apartmentNumber = null;
+                    try
+                    {
+                        if (text != null)
+                        {
+                            apartmentNumber = Convert.ToInt16(text);
+                        }
+
+                        errors = ValidationUtil.ValidateProperty(new TeacherAddress { ApartmentNumber = apartmentNumber }, propertyName);
+                    }
+                    catch 
+                    {
+                        errors.Add("Incorect apartment number!");
+                    }
+                    break;
+            }
+
+            if (errors.Any())
+            {
+                textBlock.Text = string.Join("\n", errors);
+            }
+            else
+            {
+                textBlock.Text = "";
+            }
         }
 
         private Teacher GetTeacherFromFields()
