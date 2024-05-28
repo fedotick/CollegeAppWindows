@@ -30,48 +30,62 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <ComboBox x:Name="comboBoxCathedra" Width="100" ItemsSource="{Binding SpecificCathedraNames}">
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Cathedra" VerticalAlignment="Center" FontSize="18" Margin="0 0 18 0"/>
+                <ComboBox x:Name="comboBoxCathedra" Grid.Column="0" FontSize="18" ItemsSource="{Binding SpecificCathedraNames}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Width="100" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
+                            <CheckBox Width="Auto" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <ComboBox x:Name="comboBoxRegion" Width="100" ItemsSource="{Binding SpecificRegions}">
+                <TextBlock Grid.Column="2" Text="Region" VerticalAlignment="Center" FontSize="18" Margin="0 0 18 0"/>
+                <ComboBox x:Name="comboBoxRegion" Grid.Column="2" FontSize="18" ItemsSource="{Binding SpecificRegions}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Width="100" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
+                            <CheckBox Width="Auto" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <ComboBox x:Name="comboBoxCity" Width="100" ItemsSource="{Binding SpecificCities}">
+                <TextBlock Grid.Column="4" Text="City" VerticalAlignment="Center" FontSize="18" Margin="0 0 18 0"/>
+                <ComboBox x:Name="comboBoxCity" Grid.Column="4" FontSize="18" ItemsSource="{Binding SpecificCities}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Width="100" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
+                            <CheckBox Width="Auto" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <ComboBox x:Name="comboBoxStreet" Width="100" ItemsSource="{Binding SpecificStreets}">
+                <TextBlock Grid.Column="6" Text="Street" VerticalAlignment="Center" FontSize="18" Margin="0 0 18 0"/>
+                <ComboBox x:Name="comboBoxStreet" Grid.Column="6" FontSize="18" ItemsSource="{Binding SpecificStreets}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Width="100" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
+                            <CheckBox Width="Auto" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-            </StackPanel>
+            </Grid>
 
             <!--<TextBox x:Name="textBoxSearch" Grid.Column="0" Style="{StaticResource TextBoxStyleSearch}"/>-->
 
-            <TextBlock x:Name="textBlockEntries" Grid.Column="1" FontSize="18" VerticalAlignment="Center" Margin="10 0"/>
+            <TextBlock x:Name="textBlockEntries" Grid.Column="1" FontSize="18" VerticalAlignment="Center" Margin="18 0"/>
 
-            <Button x:Name="btnAddNewEntry" Grid.Column="2" Content="Add New Entry"/>
+            <Button x:Name="btnAddNewEntry" Grid.Column="2" Style="{StaticResource ButtonStyle}" Content="Add New Entry"/>
         </Grid>
 
-        <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="3" AutoGenerateColumns="False">
+        <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="3" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" FontSize="18" IsReadOnly="True">
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="contextMenuItemEdit" Header="Edit" Click="ContextMenuEdit_Click"/>

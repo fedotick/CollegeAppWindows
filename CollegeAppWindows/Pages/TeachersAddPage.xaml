@@ -27,43 +27,43 @@
 
         <StackPanel Grid.Column="1" Grid.Row="1">
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Full name"/>
-            <TextBox x:Name="textBoxFullName" LostFocus="TextBoxFullName_LostFocus"/>
-            <TextBlock x:Name="textBlockFullName"/>
+            <TextBox x:Name="textBoxFullName" FontSize="18" LostFocus="TextBoxFullName_LostFocus"/>
+            <TextBlock x:Name="textBlockFullName" Style="{StaticResource MessageStyle}"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Cathedra"/>
-            <ComboBox x:Name="comboBoxCathedra" LostFocus="ComboBoxCathedra_LostFocus"/>
-            <TextBlock x:Name="textBlockCathedra"/>
+            <ComboBox x:Name="comboBoxCathedra" FontSize="18" LostFocus="ComboBoxCathedra_LostFocus"/>
+            <TextBlock x:Name="textBlockCathedra" Style="{StaticResource MessageStyle}"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Experience"/>
-            <TextBox x:Name="textBoxExperience" LostFocus="TextBoxExperience_LostFocus"/>
-            <TextBlock x:Name="textBlockExperience"/>
+            <TextBox x:Name="textBoxExperience" FontSize="18" LostFocus="TextBoxExperience_LostFocus"/>
+            <TextBlock x:Name="textBlockExperience" Style="{StaticResource MessageStyle}"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Date of birth"/>
-            <TextBox x:Name="textBoxDateOfBirth" LostFocus="TextBoxDateOfBirth_LostFocus"/>
-            <TextBlock x:Name="textBlockDateOfBirth"/>
+            <TextBox x:Name="textBoxDateOfBirth" FontSize="18" LostFocus="TextBoxDateOfBirth_LostFocus"/>
+            <TextBlock x:Name="textBlockDateOfBirth" Style="{StaticResource MessageStyle}"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Phone number"/>
-            <TextBox x:Name="textBoxPhoneNumber" LostFocus="TextBoxPhoneNumber_LostFocus"/>
-            <TextBlock x:Name="textBlockPhoneNumber"/>
+            <TextBox x:Name="textBoxPhoneNumber" FontSize="18" LostFocus="TextBoxPhoneNumber_LostFocus"/>
+            <TextBlock x:Name="textBlockPhoneNumber" Style="{StaticResource MessageStyle}"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Email"/>
-            <TextBox x:Name="textBoxEmail" LostFocus="TextBoxEmail_LostFocus"/>
-            <TextBlock x:Name="textBlockEmail"/>
+            <TextBox x:Name="textBoxEmail" FontSize="18" LostFocus="TextBoxEmail_LostFocus"/>
+            <TextBlock x:Name="textBlockEmail" Style="{StaticResource MessageStyle}"/>
         </StackPanel>
 
         <StackPanel Grid.Column="3" Grid.Row="1">
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Region"/>
-            <TextBox x:Name="textBoxRegion" LostFocus="TextBoxRegion_LostFocus"/>
-            <TextBlock x:Name="textBlockRegion"/>
+            <TextBox x:Name="textBoxRegion" FontSize="18" LostFocus="TextBoxRegion_LostFocus"/>
+            <TextBlock x:Name="textBlockRegion" Style="{StaticResource MessageStyle}"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="City"/>
-            <TextBox x:Name="textBoxCity" LostFocus="TextBoxCity_LostFocus"/>
-            <TextBlock x:Name="textBlockCity"/>
+            <TextBox x:Name="textBoxCity" FontSize="18" LostFocus="TextBoxCity_LostFocus"/>
+            <TextBlock x:Name="textBlockCity" Style="{StaticResource MessageStyle}"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Street"/>
-            <TextBox x:Name="textBoxStreet" LostFocus="TextBoxStreet_LostFocus"/>
-            <TextBlock x:Name="textBlockStreet"/>
+            <TextBox x:Name="textBoxStreet" FontSize="18" LostFocus="TextBoxStreet_LostFocus"/>
+            <TextBlock x:Name="textBlockStreet" Style="{StaticResource MessageStyle}"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="House number"/>
-            <TextBox x:Name="textBoxHouseNumber" LostFocus="TextBoxHouseNumber_LostFocus"/>
-            <TextBlock x:Name="textBlockHouseNumber"/>
+            <TextBox x:Name="textBoxHouseNumber" FontSize="18" LostFocus="TextBoxHouseNumber_LostFocus"/>
+            <TextBlock x:Name="textBlockHouseNumber" Style="{StaticResource MessageStyle}"/>
             <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Apartment number"/>
-            <TextBox x:Name="textBoxApartmentNumber" LostFocus="TextBoxApartmentNumber_LostFocus"/>
-            <TextBlock x:Name="textBlockApartmentNumber"/>
+            <TextBox x:Name="textBoxApartmentNumber" FontSize="18" LostFocus="TextBoxApartmentNumber_LostFocus"/>
+            <TextBlock x:Name="textBlockApartmentNumber" Style="{StaticResource MessageStyle}"/>
         </StackPanel>
 
-        <Button x:Name="btn" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3"/>
+        <Button x:Name="btn" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource ButtonStyle}"/>
     </Grid>
 </Page>
