@@ -14,8 +14,13 @@ namespace CollegeAppWindows.Pages
     /// </summary>
     public partial class StudentsShowPage : Page
     {
+        private User user;
+
+        private bool contextMenuOpening = false;
+
         private StudentService studentService = StudentService.GetInstance;
         private StudentViewService studentViewService = StudentViewService.GetInstance;
+        private GroupService groupService = GroupService.GetInstance;
 
         private List<StudentView> studentViews;
         private List<StudentView> filteredStudentViews;
@@ -36,15 +41,56 @@ namespace CollegeAppWindows.Pages
         public StudentsShowPage()
         {
             InitializeComponent();
+
+            user = LoggedInUser.GetInstance().GetUser();
+
             DataContext = this;
 
             studentViews = studentViewService.GetAll();
             filteredStudentViews = studentViews;
 
             InitializeComboBoxes();
-            ShowStudents();
+
+            CheckRole();
+
+            FilterStudentViews();
 
             btnAddNewEntry.Click += BtnAddNewEntry_Click;
+        }
+
+        private void CheckRole()
+        {
+            if (user.RoleId == 2)
+            {
+                contextMenuItemDelete.Visibility = Visibility.Collapsed;
+            }
+
+            if (user.RoleId == 4)
+            {
+                btnAddNewEntry.Visibility = Visibility.Collapsed;
+                contextMenuOpening = true;
+                comboBoxGroup.Visibility = Visibility.Collapsed;
+
+                List<Group> groups = groupService.GetAll();
+                foreach (Group group in groups)
+                {
+                    if (group.TeacherId == user.TeacherId)
+                    {
+                        for(int i = 0; i < SpecificGroupNames.Count; i++)
+                        {
+                            if (SpecificGroupNames[i].Text == group.Name)
+                            {
+                                SpecificGroupNames[i].IsChecked = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void DataGrid_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            e.Handled = contextMenuOpening;
         }
 
         private void InitializeComboBoxes()
@@ -56,6 +102,11 @@ namespace CollegeAppWindows.Pages
             SelectableItemUtil.AddTextToSelectableItems(availableRegions, SpecificRegions);
             SelectableItemUtil.AddTextToSelectableItems(availableCities, SpecificCities);
             SelectableItemUtil.AddTextToSelectableItems(availableStreets, SpecificStreets);
+
+            comboBoxGroup.ItemsSource = SpecificGroupNames;
+            comboBoxRegion.ItemsSource = SpecificRegions;
+            comboBoxCity.ItemsSource = SpecificCities;
+            comboBoxStreet.ItemsSource = SpecificStreets;
         }
 
         private void InitializeUniqueValues()
@@ -83,11 +134,11 @@ namespace CollegeAppWindows.Pages
         {
             filteredStudentViews = studentViews;
 
-            List<SelectableItem>? specificCathedraNames = comboBoxCathedra.ItemsSource as List<SelectableItem>;
-            HashSet<string> specificCathedraNames1 = SelectableItemUtil.GetCheckedItemsHashSet(specificCathedraNames);
-            if (specificCathedraNames1.Count > 0)
+            List<SelectableItem>? specificGroupNames = comboBoxGroup.ItemsSource as List<SelectableItem>;
+            HashSet<string> specificGroupNames1 = SelectableItemUtil.GetCheckedItemsHashSet(specificGroupNames);
+            if (specificGroupNames1.Count > 0)
             {
-                filteredStudentViews = DataUtil.FilterBySpecificItems(filteredStudentViews, specificCathedraNames1, t => t.GroupName);
+                filteredStudentViews = DataUtil.FilterBySpecificItems(filteredStudentViews, specificGroupNames1, t => t.GroupName);
             }
 
             List<SelectableItem>? specificRegions = comboBoxRegion.ItemsSource as List<SelectableItem>;

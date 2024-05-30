@@ -14,6 +14,8 @@ namespace CollegeAppWindows.Pages
     /// </summary>
     public partial class TeachersShowPage : Page
     {
+        private User user;
+
         private TeacherService teacherService = TeacherService.GetInstance;
         private TeacherViewService teacherViewService = TeacherViewService.GetInstance;
 
@@ -36,15 +38,29 @@ namespace CollegeAppWindows.Pages
         public TeachersShowPage()
         {
             InitializeComponent();
+
+            user = LoggedInUser.GetInstance().GetUser();
+
             DataContext = this;
 
             teacherViews = teacherViewService.GetAll();
             filteredTeacherViews = teacherViews;
 
             InitializeComboBoxes();
+
+            CheckRole();
+            
             ShowTeachers();
 
             btnAddNewEntry.Click += BtnAddNewEntry_Click;
+        }
+
+        private void CheckRole()
+        {
+            if (user.RoleId == 2)
+            {
+                contextMenuItemDelete.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void InitializeComboBoxes()

@@ -28,19 +28,25 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Style="{StaticResource LogInTextBlockStyle}" Text="Log In"/>
             
             <StackPanel Grid.Row="2">
                 <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Username"/>
-                <TextBox x:Name="textBoxUsername"/>
+                <TextBox x:Name="textBoxUsername" FontSize="18"/>
+                <TextBlock x:Name="textBlockUsername" Style="{StaticResource MessageStyle}"/>
             </StackPanel>
 
             <StackPanel Grid.Row="4">
                 <TextBlock Style="{StaticResource LabelTextBlockStyle}" Text="Password"/>
-                <TextBox x:Name="textBoxPassword"/>
+                <PasswordBox x:Name="passwordBoxPassword" FontSize="18" />
+                <TextBlock x:Name="textBlockPassword" Style="{StaticResource MessageStyle}"/>
             </StackPanel>
+
+            <Button x:Name="btnLogin" Grid.Row="6" Style="{StaticResource ButtonStyle}">Login</Button>
         </Grid>
     </Grid>
 </Page>

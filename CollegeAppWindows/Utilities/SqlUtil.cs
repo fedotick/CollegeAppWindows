@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Reflection;
 using System.Text;
+using System.Windows;
 
 namespace CollegeAppWindows.Utilities
 {
@@ -29,17 +30,24 @@ namespace CollegeAppWindows.Utilities
 
             DataBase.GetInstance.OpenConnection();
 
-            using (SqlCommand command = new SqlCommand(query, DataBase.GetInstance.GetConnection()))
+            try
             {
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlCommand command = new SqlCommand(query, DataBase.GetInstance.GetConnection()))
                 {
-                    while (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        COLUMN column = new COLUMN();
-                        MapValuesFromDataReader(column, reader);
-                        columns.Add(column);
+                        while (reader.Read())
+                        {
+                            COLUMN column = new COLUMN();
+                            MapValuesFromDataReader(column, reader);
+                            columns.Add(column);
+                        }
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             DataBase.GetInstance.CloseConnection();

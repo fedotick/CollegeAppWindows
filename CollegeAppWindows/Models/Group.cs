@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CollegeAppWindows.Models
 {
@@ -24,5 +20,7 @@ namespace CollegeAppWindows.Models
 
         [Required(ErrorMessage = "Year of admission is required!")]
         public int YearOfAdmission { get; set; }
+
+        public int TeacherId { get; set;}
     }
 }

@@ -58,3 +58,5 @@ C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\Colleg
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\bin\Debug\net7.0-windows\Microsoft.Xaml.Behaviors.dll
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\LogInPage.g.cs
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\LogInPage.baml
+C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\UsersMainPage.g.cs
+C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\UsersMainPage.baml

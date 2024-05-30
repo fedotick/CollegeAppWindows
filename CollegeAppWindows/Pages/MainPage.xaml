@@ -18,27 +18,24 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Padding="20 0" VerticalAlignment="Center" Text="College"/>
 
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Grid.Row="0">
-                        <Button x:Name="btnCathedrae" Style="{StaticResource NavigationButtonStyle}" Content="Cathedrae"/>
-                        <Button x:Name="btnGroups" Style="{StaticResource NavigationButtonStyle}" Content="Groups"/>
-                        <Button x:Name="btnSections" Style="{StaticResource NavigationButtonStyle}" Content="Sections"/>
-                        <Button x:Name="btnSpecialties" Style="{StaticResource NavigationButtonStyle}" Content="Specialties"/>
-                        <Button x:Name="btnStudents" Style="{StaticResource NavigationButtonStyle}" Content="Students"/>
-                        <Button x:Name="btnTeachers" Style="{StaticResource NavigationButtonStyle}" Content="Teachers"/>
-                    </StackPanel>
-                </Grid>
+                <StackPanel>
+                    <Button x:Name="btnCathedrae" Style="{StaticResource NavigationButtonStyle}" Content="Cathedrae"/>
+                    <Button x:Name="btnGroups" Style="{StaticResource NavigationButtonStyle}" Content="Groups"/>
+                    <Button x:Name="btnSections" Style="{StaticResource NavigationButtonStyle}" Content="Sections"/>
+                    <Button x:Name="btnSpecialties" Style="{StaticResource NavigationButtonStyle}" Content="Specialties"/>
+                    <Button x:Name="btnStudents" Style="{StaticResource NavigationButtonStyle}" Content="Students"/>
+                    <Button x:Name="btnTeachers" Style="{StaticResource NavigationButtonStyle}" Content="Teachers"/>
+                    <Button x:Name="btnUsers" Style="{StaticResource NavigationButtonStyle}" Content="Users"/>
+                </StackPanel>
             </ScrollViewer>
+
+            <!--<TextBlock x:Name="textBlockLogOut" Grid.Row="2" Padding="20" Text="LogOut"/>-->
         </Grid>
 
         <Frame Grid.Column="1" x:Name="ContentFrame"/>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\App.xaml
-151878389501
+16-194733525
 
-43862078826
+48-1408068048
 20227323513
-MainWindow.xaml;Pages\CathedraeMainPage.xaml;Pages\GroupsMainPage.xaml;Pages\GroupsShowPage.xaml;Pages\LogInPage.xaml;Pages\MainPage.xaml;Pages\SectionsMainPage.xaml;Pages\SpecialtiesMainPage.xaml;Pages\StudentsAddPage.xaml;Pages\StudentsMainPage.xaml;Pages\StudentsShowPage.xaml;Pages\TeachersAddPage.xaml;Pages\TeachersMainPage.xaml;Pages\TeachersShowPage.xaml;Styles.xaml;
+MainWindow.xaml;Pages\CathedraeMainPage.xaml;Pages\GroupsMainPage.xaml;Pages\GroupsShowPage.xaml;Pages\LogInPage.xaml;Pages\MainPage.xaml;Pages\SectionsMainPage.xaml;Pages\SpecialtiesMainPage.xaml;Pages\StudentsAddPage.xaml;Pages\StudentsMainPage.xaml;Pages\StudentsShowPage.xaml;Pages\TeachersAddPage.xaml;Pages\TeachersMainPage.xaml;Pages\TeachersShowPage.xaml;Pages\UsersMainPage.xaml;Styles.xaml;
 
 True
 

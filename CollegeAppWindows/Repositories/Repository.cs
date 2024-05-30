@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace CollegeAppWindows.Repositories
 {
@@ -14,8 +15,8 @@ namespace CollegeAppWindows.Repositories
 
         private Repository()
         {
-             // isView = IsView();
-             // CreateProcedures();
+            isView = IsView();
+            CreateProcedures();
         }
 
         public static Repository<T> GetInstance
@@ -68,21 +69,28 @@ namespace CollegeAppWindows.Repositories
 
             DataBase.GetInstance.OpenConnection();
 
-            using (SqlCommand command = transaction == null
+            try
+            {
+                using (SqlCommand command = transaction == null
                 ? new SqlCommand(query, connection)
                 : new SqlCommand(query, connection, transaction))
-            {
-                command.CommandType = CommandType.StoredProcedure;
-
-                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    while (reader.Read())
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        T model = Activator.CreateInstance<T>();
-                        SqlUtil.MapValuesFromDataReader(model, reader);
-                        models.Add(model);
+                        while (reader.Read())
+                        {
+                            T model = Activator.CreateInstance<T>();
+                            SqlUtil.MapValuesFromDataReader(model, reader);
+                            models.Add(model);
+                        }
                     }
                 }
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message, "Repository.cs | GetAll");
             }
 
             if (transaction == null)
@@ -191,7 +199,14 @@ namespace CollegeAppWindows.Repositories
 
             using (SqlCommand command = new SqlCommand(query, DataBase.GetInstance.GetConnection()))
             {
-                tableType = command.ExecuteScalar().ToString();
+                try
+                {
+                    tableType = command.ExecuteScalar().ToString();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
             DataBase.GetInstance.CloseConnection();
@@ -231,7 +246,14 @@ namespace CollegeAppWindows.Repositories
 
             using(SqlCommand command = new SqlCommand(query, DataBase.GetInstance.GetConnection()))
             {
-                command.ExecuteNonQuery();
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
             DataBase.GetInstance.CloseConnection();

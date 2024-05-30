@@ -31,7 +31,7 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <ComboBox x:Name="comboBoxCathedra" Width="100" ItemsSource="{Binding SpecificGroupNames}">
+                <ComboBox x:Name="comboBoxGroup" Width="100" ItemsSource="{Binding SpecificGroupNames}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <CheckBox Width="100" Content="{Binding Text}" IsChecked="{Binding IsChecked}" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed" />
@@ -71,7 +71,7 @@
             <Button x:Name="btnAddNewEntry" Grid.Column="2" Content="Add New Entry"/>
         </Grid>
 
-        <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="3" AutoGenerateColumns="False">
+        <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="3" AutoGenerateColumns="False" ContextMenuOpening="DataGrid_ContextMenuOpening">
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="contextMenuItemEdit" Header="Edit" Click="ContextMenuEdit_Click" />

@@ -1,4 +1,6 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
+using System.Windows;
 
 namespace CollegeAppWindows
 {
@@ -9,9 +11,13 @@ namespace CollegeAppWindows
     {
         private static DataBase? instance;
 
-        private SqlConnection sqlConnection = new SqlConnection(@"Data Source=DESKTOP-L2NIP6G\MSSQLSERVER01;Initial Catalog=CollegeDB;Integrated Security=true");
+        private string connectionString = @"Data Source=DESKTOP-L2NIP6G\MSSQLSERVER01;Initial Catalog=CollegeDB;Integrated Security=true";
+        private SqlConnection sqlConnection;
 
-        private DataBase() { }
+        private DataBase() 
+        {
+            sqlConnection = new SqlConnection(connectionString);
+        }
 
         /// <summary>
         /// Public static method for obtaining a single instance of a class.
@@ -36,7 +42,14 @@ namespace CollegeAppWindows
         {
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
             {
-                sqlConnection.Open();
+                try
+                {
+                    sqlConnection.Open();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -58,6 +71,12 @@ namespace CollegeAppWindows
         public SqlConnection GetConnection()
         {
             return sqlConnection;
+        }
+
+        public string GetDataSource()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connectionString);
+            return builder.DataSource;
         }
     }
 }
