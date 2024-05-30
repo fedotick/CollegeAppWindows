@@ -148,15 +148,25 @@ namespace CollegeAppWindows.Utilities
         public static string GetInsertProcedureQuery<T>()
         {
             List<COLUMN> columns = GetColumns<T>();
-            columns.RemoveAt(0);
 
-            string procedureName = $"Insert{typeof(T).Name}";
-            string parameters = GetParameters(columns);
-            string insertQuery = GetInsertQuery<T>();
+            try
+            {
+                columns.RemoveAt(0);
 
-            string query = GetCreateOrAlterProcedureQuery(procedureName, parameters, insertQuery);
+                string procedureName = $"Insert{typeof(T).Name}";
+                string parameters = GetParameters(columns);
+                string insertQuery = GetInsertQuery<T>();
 
-            return query;
+                string query = GetCreateOrAlterProcedureQuery(procedureName, parameters, insertQuery);
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SqlUtil.cs | GetInsertProcedureQuery");
+            }
+
+            return string.Empty;
         }
 
         public static string GetSelectProcedureQuery<T>()
@@ -226,7 +236,8 @@ namespace CollegeAppWindows.Utilities
             {
                 if (property != properties[0] || !isInsert)
                 {
-                    command.Parameters.AddWithValue($"@{property.Name}", property.GetValue(model));
+                    object value = property.GetValue(model) ?? DBNull.Value;
+                    command.Parameters.Add(new SqlParameter($"@{property.Name}", value));
                 }
             }
         }

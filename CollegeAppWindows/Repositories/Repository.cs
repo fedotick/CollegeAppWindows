@@ -15,8 +15,8 @@ namespace CollegeAppWindows.Repositories
 
         private Repository()
         {
-            isView = IsView();
-            CreateProcedures();
+            //isView = IsView();
+            //CreateProcedures();
         }
 
         public static Repository<T> GetInstance

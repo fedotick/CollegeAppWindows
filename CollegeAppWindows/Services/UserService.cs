@@ -27,6 +27,26 @@ namespace CollegeAppWindows.Services
             }
         }
 
+        public void Add(User user)
+        {
+            userRepository.Add(user);
+        }
+
+        public List<User> GetAll()
+        {
+            return userRepository.GetAll();
+        }
+
+        public void Update(User user)
+        {
+            userRepository.Update(user);
+        }
+
+        public void Delete(int id)
+        {
+            userRepository.DeleteById(id);
+        }
+
         public bool LogIn(string username, string password)
         {
             List<User> users = userRepository.GetAll();

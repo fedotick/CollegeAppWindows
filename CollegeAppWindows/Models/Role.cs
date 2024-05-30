@@ -2,7 +2,7 @@
 
 namespace CollegeAppWindows.Models
 {
-    internal class Role
+    public class Role
     {
         public int Id { get; set; }
 

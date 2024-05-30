@@ -2,7 +2,7 @@
 
 namespace CollegeAppWindows.Models
 {
-    internal class User
+    public class User
     {
         public int Id { get; set; }
 
@@ -16,6 +16,8 @@ namespace CollegeAppWindows.Models
 
         [Required(ErrorMessage = "Role is required!")]
         public int? RoleId { get; set; }
+
+        [Required(ErrorMessage = "Teacher is required!")]
         public int? TeacherId { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CollegeAppWindows.Models;
 using CollegeAppWindows.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows;
 
@@ -53,6 +54,11 @@ namespace CollegeAppWindows.Services
             }
 
             DataBase.GetInstance.CloseConnection();
+        }
+
+        public List<Teacher> GetAll()
+        {
+            return teacherRepository.GetAll();
         }
 
         public void Update(Teacher teacher, TeacherAddress teacherAddress)
