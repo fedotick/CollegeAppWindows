@@ -21,7 +21,15 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Padding="20 0" VerticalAlignment="Center" Text="College"/>
+            <TextBlock 
+                Grid.Row="0" 
+                Padding="20 0" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                FontSize="42" 
+                FontWeight="Bold" 
+                FontFamily="Bernadette Rough"
+                Text="College"/>
 
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                 <StackPanel>
