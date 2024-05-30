@@ -78,5 +78,11 @@ namespace CollegeAppWindows
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connectionString);
             return builder.DataSource;
         }
+
+        public string GetInitialCatalog()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connectionString);
+            return builder.InitialCatalog;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Reflection;
 using System.Text;
@@ -243,6 +244,71 @@ namespace CollegeAppWindows.Utilities
                 if (Convert.IsDBNull(value)) value = null;
 
                 property.SetValue(model, value);
+            }
+        }
+
+        public static bool SaveBackUp(string path)
+        {
+            string initialCatalog = DataBase.GetInstance.GetInitialCatalog();
+
+            string query = $@"
+            BACKUP DATABASE [{initialCatalog}] 
+            TO DISK = N'{path}' 
+            WITH NOFORMAT, NOINIT,  
+            NAME = N'{initialCatalog}-Full Database Backup', 
+            SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
+
+            DataBase.GetInstance.OpenConnection();
+
+            using (SqlCommand command = new SqlCommand(query, DataBase.GetInstance.GetConnection()))
+            {
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    DataBase.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        public static bool LoadBackUp(string path)
+        {
+            string initialCatalog = DataBase.GetInstance.GetInitialCatalog();
+
+            string query = $@"
+            USE master;
+            ALTER DATABASE [{initialCatalog}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+            RESTORE DATABASE [{initialCatalog}] 
+            FROM DISK = N'{path}' 
+            WITH REPLACE;
+            ALTER DATABASE [{initialCatalog}] SET MULTI_USER;";
+
+            DataBase.GetInstance.OpenConnection();
+
+            try
+            {
+                SqlCommand command = new SqlCommand(query, DataBase.GetInstance.GetConnection());
+                command.ExecuteNonQuery();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                DataBase.GetInstance.CloseConnection();
             }
         }
     }

@@ -36,6 +36,7 @@
             </ScrollViewer>
 
             <!--<TextBlock x:Name="textBlockLogOut" Grid.Row="2" Padding="20" Text="LogOut"/>-->
+            <Button x:Name="btnBackUp" Grid.Row="2" Style="{StaticResource NavigationButtonStyle}" Content="BackUp"/>
         </Grid>
 
         <Frame Grid.Column="1" x:Name="ContentFrame"/>

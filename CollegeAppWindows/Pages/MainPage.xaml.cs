@@ -28,6 +28,7 @@ namespace CollegeAppWindows.Pages
             btnUsers.Click += Btn_Click;
 
             //textBlockLogOut.MouseLeftButtonDown += TextBlockLogOut_MouseLeftButtonDown;
+            btnBackUp.Click += BtnBackUp_Click;
 
             CheckRole();
         }
@@ -67,6 +68,11 @@ namespace CollegeAppWindows.Pages
 
                 ContentFrame.Navigate(new Uri($"Pages/{buttonContent}MainPage.xaml", UriKind.Relative));
             }
+        }
+
+        private void BtnBackUp_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(new Uri($"Pages/BackUpPage.xaml", UriKind.Relative));
         }
 
         private void TextBlockLogOut_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

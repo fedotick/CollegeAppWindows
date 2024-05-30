@@ -60,3 +60,5 @@ C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\Colleg
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\LogInPage.baml
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\UsersMainPage.g.cs
 C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\UsersMainPage.baml
+C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\BackUpPage.g.cs
+C:\Users\Фёдор Ткачук\OneDrive\CEITI\College\CollegeAppWindows\CollegeAppWindows\obj\Debug\net7.0-windows\Pages\BackUpPage.baml
